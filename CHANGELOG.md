@@ -5,6 +5,16 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions : [S
 
 ## [Non publié]
 
+## [0.3.0] - 2026-11-14
+### Ajouté
+- Mode CEO : agent `coo`, interlocuteur unique du CEO, prévu pour tourner comme session
+  principale (`"agent": "devteam:coo"` dans `.claude/settings.json` ou `claude --agent devteam:coo`).
+- Commande `/devteam:coo` pour endosser le rôle dans une session déjà ouverte.
+- Rapport COO au format fixe avec bloc « DÉCISION REQUISE », enregistré dans
+  `docs/rapports-coo/` (modèle `templates/rapport-coo.md`).
+- Journal des décisions du CEO `docs/decisions-ceo.md` (modèle `templates/decisions-ceo.md`).
+- README : sections « Mode CEO » et « Feuille de route » (phase 2 : Microsoft Teams, non implémentée).
+
 ## [0.2.0] - 2026-11-14
 ### Ajouté
 - Skill `clean-code` : simplicité, lisibilité, générique au bon moment (règle de trois), nommage,

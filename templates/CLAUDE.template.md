@@ -49,3 +49,6 @@ docs/      mémoire partagée de l'équipe devteam
 | docs/reviews/ | Rapports de revue | tech-lead-reviewer |
 | docs/qa/ | Rapports de test | qa-testeur |
 | docs/suivi.md | Avancement, risques | chef-de-projet |
+| docs/securite/ | Audits de sécurité | expert-cybersecurite |
+| docs/rapports-coo/ | Comptes rendus au CEO | coo |
+| docs/decisions-ceo.md | Journal des décisions du CEO | coo |

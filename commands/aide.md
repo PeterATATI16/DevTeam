@@ -9,6 +9,11 @@ Affiche à l'utilisateur l'aide ci-dessous, en français, de façon lisible. Si 
 est fourni (`$ARGUMENTS`), détaille seulement la commande correspondante. N'appelle
 aucun agent.
 
+## Mode CEO (le plus simple)
+Vous êtes le CEO et vous ne parlez qu'au COO, en langage naturel. Pour l'activer :
+`{ "agent": "devteam:coo" }` dans `.claude/settings.json` du projet, ou `claude --agent devteam:coo`,
+ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessaire.
+
 ## L'équipe
 | Rôle | Agent | Livrables |
 |---|---|---|
@@ -38,6 +43,7 @@ aucun agent.
 | `/devteam:deploy [env]` | DevOps, confirmation avant toute action irréversible |
 | `/devteam:doc [périmètre]` | Documentation |
 | `/devteam:statut` | Point d'avancement |
+| `/devteam:coo [instruction]` | Mode CEO : la session devient le COO |
 | `/devteam:aide [commande]` | Cette aide |
 
 ## Déroulé type

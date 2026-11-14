@@ -29,7 +29,8 @@ immédiatement.
 
 ### Autres tics à bannir
 - Emojis décoratifs dans les titres, le code, les commits ou l'interface.
-  Tolérés seulement comme marqueurs fonctionnels dans les tableaux de statut (✅ ❌).
+  Tolérés seulement comme marqueurs fonctionnels : tableaux de statut (✅ ❌) et
+  rubriques du rapport COO (✅ 🔄 ⛔ ❓ ⚠️ ➡️), dont le format est fixe.
 - Formules creuses : « Il est important de noter que », « N'hésitez pas à »,
   « Plongeons dans », « En somme », « robuste et évolutif », « solution complète ».
 - Gras sur une phrase sur deux : le gras est réservé à un mot clé par paragraphe au plus.

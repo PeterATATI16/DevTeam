@@ -5,7 +5,7 @@ Chaque rôle d'une vraie équipe devient un **subagent spécialisé**. Des **com
 orchestrent le cycle de vie d'un projet : cadrage, conception, sprints, revue, tests,
 déploiement, documentation et suivi.
 
-> Version 0.2.0, auteur : Peter ATATI
+> Version 0.3.0, auteur : Peter ATATI
 
 ---
 
@@ -13,9 +13,9 @@ déploiement, documentation et suivi.
 
 ```mermaid
 flowchart TB
-  U([Vous : client, décideur])
-  O{{Session principale<br/>= orchestrateur<br/>commandes /devteam:*}}
-  U <-->|validations ✋| O
+  U([Vous : CEO])
+  O{{COO<br/>session principale<br/>orchestrateur}}
+  U <-->|instructions, rapports, décisions| O
 
   subgraph Cadrage
     BA[Business Analyst] --> PO[Product Owner]
@@ -69,6 +69,7 @@ fichiers** dans le dépôt du projet.
 | 11 | `devops` | Docker, docker-compose, `.gitlab-ci.yml`, déploiement | sonnet | code + Bash |
 | 12 | `redacteur-technique` | README, `docs/api.md`, CHANGELOG | haiku | lecture/écriture docs |
 | 13 | `chef-de-projet` | Avancement, risques → `docs/suivi.md` | haiku | lecture + écriture du suivi |
+| | `coo` | **Agent principal** : interlocuteur du CEO, délègue, contrôle, arbitre, rapports et journal des décisions | modèle de la session | Agent + lecture, écriture de `docs/rapports-coo/` et `docs/decisions-ceo.md` |
 
 ### Les commandes
 
@@ -83,6 +84,7 @@ fichiers** dans le dépôt du projet.
 | `/devteam:deploy [env]` | DevOps, avec confirmation action par action avant tout geste irréversible |
 | `/devteam:doc [périmètre]` | Rédacteur technique |
 | `/devteam:statut` | Chef de projet |
+| `/devteam:coo [instruction]` | La session endosse le rôle de COO (mode CEO) |
 | `/devteam:aide [commande]` | Aide intégrée |
 
 ### Les skills (procédures réutilisables)
@@ -128,6 +130,8 @@ mon-projet/
     ├── reviews/           # rapports de revue              ← tech-lead-reviewer
     ├── qa/                # rapports de test               ← qa-testeur
     ├── securite/          # audits de sécurité             ← expert-cybersecurite
+    ├── rapports-coo/      # un rapport par compte rendu    ← COO
+    ├── decisions-ceo.md   # journal des décisions du CEO   ← COO
     └── suivi.md           # avancement et risques          ← chef-de-projet
 ```
 
@@ -142,6 +146,91 @@ Les modèles de ces fichiers se trouvent dans [`templates/`](templates/).
 5. Avant **chaque** action irréversible ou distante (`deploy`) : push, déploiement, migration de production.
 
 Aucun agent ne pousse de code ni ne déploie sans votre accord explicite.
+
+---
+
+## Mode CEO : parler à un seul interlocuteur, le COO
+
+Vous jouez le **CEO**. Vous ne parlez qu'au **COO** (directeur des opérations), en langage
+naturel, sans connaître aucune commande. Le COO est la **session principale** de Claude Code,
+et non un subagent, puisqu'un subagent ne peut pas en lancer d'autres. Il reformule
+votre demande, pose au plus 3 questions de cadrage et propose un plan. Ensuite, il délègue
+aux 13 agents dans le bon ordre et contrôle leurs livrables. Il ne vous interrompt que pour
+une décision.
+
+### Activer le COO
+
+La documentation de Claude Code ne prévoit pas qu'un plugin impose un rôle à la session
+principale. Le mécanisme officiel est le réglage `agent` (ou l'option `--agent`), qui fait
+tourner la session principale avec le prompt, les outils et le modèle d'un agent.
+
+| Usage | Comment |
+|---|---|
+| **Projet en mode CEO par défaut** (recommandé) | Dans le projet cible, `.claude/settings.json` : `{ "agent": "devteam:coo" }` |
+| Une seule session | `claude --agent devteam:coo` |
+| Dans une session déjà ouverte | `/devteam:coo` (la session endosse le rôle jusqu'à la fin de la conversation) |
+
+Placez le réglage dans le `.claude/settings.json` **du projet** plutôt que dans
+`~/.claude/settings.json`. Sinon, toutes vos sessions, dans tous vos projets, démarreront en COO.
+L'option `--agent` l'emporte toujours sur le réglage, par exemple
+`claude --agent devteam:dev-backend` pour une session ponctuelle.
+
+### Ce que le COO vous remonte, et seulement cela
+1. Le choix de la stack et les décisions d'architecture coûteuses à changer.
+2. La validation des specs et du périmètre du MVP.
+3. Les compromis délai, qualité et périmètre, par exemple une story bloquée après 3 itérations.
+4. Le déploiement en production.
+5. Les dépenses.
+6. Les actions irréversibles ou externes : `git push`, fusion dans `main`, migration, suppression.
+
+### Rapport au format fixe
+Chaque compte rendu suit le modèle [`templates/rapport-coo.md`](templates/rapport-coo.md).
+Il est affiché, puis enregistré dans `docs/rapports-coo/AAAA-MM-JJ-HHMM.md`. Il se termine par
+un bloc `DÉCISION REQUISE` numéroté quand le COO attend une validation. Chacune de vos
+décisions est consignée dans `docs/decisions-ceo.md`, que le COO relit avant chaque mission.
+
+### Exemple de dialogue
+
+> **CEO** : Je veux une petite API de gestion de tâches pour mon équipe. Fais-moi le point et dis-moi ce que tu proposes.
+
+> **COO** :
+> ### Rapport COO : 2026-11-14 15:00
+> **Mission** : donner à votre équipe un service central pour créer, attribuer et suivre ses tâches.
+> - ✅ **Fait** : état des lieux (dépôt vide), journal des décisions créé.
+> - 🔄 **En cours** : aucun point.
+> - ⛔ **Bloqué** : aucun point.
+> - ❓ **Décisions attendues du CEO**
+>   1. Périmètre : API seule ou avec écran web ? Recommandation : API seule, un écran pourra venir ensuite.
+>   2. Accès : un compte par membre ? Recommandation : oui, pour savoir qui fait quoi.
+>   3. Budget : une dépense à ce stade ? Recommandation : non, la V1 tourne sur un serveur interne.
+> - ⚠️ **Risques** : périmètre qui gonfle (impact moyen), parade : MVP court validé avant tout développement.
+> - ➡️ **Prochaine étape proposée** : specs et user stories par le Business Analyst, après vos réponses.
+>
+> #### DÉCISION REQUISE
+> 1. Périmètre : « 1 : oui » pour une API seule. Recommandation : API seule.
+> 2. Accès : « 2 : oui ». Recommandation : oui.
+> 3. Budget : « 3 : oui » pour aucune dépense. Recommandation : aucune dépense.
+
+> **CEO** : 1 oui, 2 oui, 3 oui. Vas-y.
+
+> **COO** : C'est noté (décisions D-001 à D-003). Je lance le Business Analyst, puis le
+> Product Owner. Je reviens vers vous pour valider les specs et le MVP.
+>
+> *Le COO fait travailler `business-analyst`, puis `product-owner`, sans interrompre le CEO.*
+>
+> ### Rapport COO : 2026-11-14 15:40
+> - ✅ **Fait** : specs (`docs/specs.md`), 9 user stories, MVP de 5 stories en 2 sprints.
+> - …
+> #### DÉCISION REQUISE
+> 1. Valider les specs et le MVP. Recommandation : oui, le périmètre tient en 2 sprints.
+
+> **CEO** : Validé. Et prends la stack que tu juges la plus simple à maintenir.
+
+> **COO** : Décision D-004 consignée. Je fais travailler l'architecte et vous présente la
+> stack avec son coût de maintenance avant le premier sprint.
+
+Les commandes `/devteam:*` restent disponibles pour les utilisateurs avancés. Si vous en tapez
+une, le COO l'exécute normalement.
 
 ---
 
@@ -352,14 +441,32 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 ├── .claude-plugin/
 │   ├── plugin.json          # manifeste du plugin
 │   └── marketplace.json     # marketplace pointant vers ce dépôt
-├── agents/                  # 13 subagents
-├── commands/                # 10 commandes /devteam:*
+├── agents/                  # 13 subagents + le COO (agent principal)
+├── commands/                # 11 commandes /devteam:*
 ├── skills/                  # 9 skills (SKILL.md, et references/ si besoin)
 ├── hooks/                   # hooks.json + lint-si-present.sh
 ├── templates/               # modèles de la mémoire partagée
 ├── README.md
 └── CHANGELOG.md
 ```
+
+## Feuille de route
+
+| Phase | Contenu | Statut |
+|---|---|---|
+| 1 | Équipe de 13 agents, commandes, standards de code, mode CEO avec le COO, fonctionnement 100 % terminal | Livrée (0.3.0) |
+| 2 | Connexion du COO à Microsoft Teams (notifications et échanges bidirectionnels via Claude Code en mode headless, sans clé API) | Prévue |
+
+La phase 2 est préparée sans être implémentée. Le plugin ne contient aucun bridge, webhook,
+bot ni serveur, et fonctionne entièrement dans le terminal Claude Code, sans clé d'API ni
+service externe. Trois choix faciliteront l'intégration :
+- les rapports du COO ont un format fixe (six rubriques et un bloc `DÉCISION REQUISE` numéroté),
+  convertible tel quel en carte Teams ;
+- chaque rapport est un fichier `docs/rapports-coo/<date-heure>.md`, donc facile à relayer ;
+- chaque décision du CEO est tracée dans `docs/decisions-ceo.md`, avec un identifiant `D-xxx`
+  qu'une réponse depuis Teams pourra référencer.
+
+---
 
 ## Licence
 À définir par l'auteur.
