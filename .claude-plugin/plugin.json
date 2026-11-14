@@ -1,0 +1,10 @@
+{
+  "name": "devteam",
+  "version": "0.1.0",
+  "description": "Entreprise de développement logiciel virtuelle : 12 agents spécialisés (BA, PO, architecte, designer, développeurs, tech lead, QA, DevOps, rédacteur, chef de projet) orchestrés par des commandes slash, avec mémoire partagée dans docs/.",
+  "author": {
+    "name": "Peter ATATI"
+  },
+  "repository": "https://github.com/PeterATATI16/DevTeam",
+  "keywords": ["agents", "equipe", "scrum", "orchestration", "revue-de-code", "qa", "devops", "francais"]
+}

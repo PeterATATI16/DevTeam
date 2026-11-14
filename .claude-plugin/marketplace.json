@@ -1,0 +1,15 @@
+{
+  "name": "devteam-marketplace",
+  "description": "Marketplace du plugin devteam : une équipe de développement logiciel virtuelle pour Claude Code.",
+  "owner": {
+    "name": "Peter ATATI"
+  },
+  "plugins": [
+    {
+      "name": "devteam",
+      "source": "./",
+      "description": "Équipe de développement virtuelle : 12 agents spécialisés et commandes d'orchestration du cycle de vie d'un projet.",
+      "version": "0.1.0"
+    }
+  ]
+}

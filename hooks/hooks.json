@@ -1,0 +1,17 @@
+{
+  "description": "devteam : formate/linte automatiquement les fichiers de code après chaque Edit ou Write, si l'outil du projet est installé. Jamais bloquant.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/lint-si-present.sh\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
