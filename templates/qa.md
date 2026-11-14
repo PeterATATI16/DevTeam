@@ -1,4 +1,4 @@
-# Rapport QA — <US-xxx> — itération <N>
+# Rapport QA : <US-xxx>, itération <N>
 
 > Testeur : qa-testeur · Date : AAAA-MM-JJ · Branche : `<branche>`
 
@@ -18,14 +18,14 @@
 | CA-1 | TC-01 | Nominal | Intégration | | ✅ |
 
 ## Anomalies
-### QA-01 — <Gravité : Bloquante | Majeure | Mineure> — <Critère>
+### QA-01 | <Gravité : Bloquante, Majeure ou Mineure> | <Critère>
 - **Étapes** :
 - **Attendu** :
 - **Obtenu** :
 - **Test** :
 
 ## Tests ajoutés
-- `chemin/du/test` — …
+- `chemin/du/test` : …
 
 ## Remarques
 - …

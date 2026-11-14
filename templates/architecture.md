@@ -1,4 +1,4 @@
-# Architecture — <Nom du projet>
+# Architecture : <Nom du projet>
 
 > Rédigé par : architecte · Version : 0.1 · Date : AAAA-MM-JJ · Statut : Proposé | Validé
 

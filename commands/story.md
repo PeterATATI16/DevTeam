@@ -1,5 +1,5 @@
 ---
-description: Réalise une seule user story — boucle développeur → tech lead → QA (3 itérations de correction maximum), puis met à jour le backlog.
+description: "Réalise une seule user story : boucle développeur → tech lead → QA (3 itérations de correction maximum), puis met à jour le backlog."
 argument-hint: "<id de la story, ex. US-004>"
 disable-model-invocation: true
 ---
@@ -14,11 +14,13 @@ Story demandée : **$ARGUMENTS**
 Dossier des modèles : `${CLAUDE_PLUGIN_ROOT}/templates/` (sinon, Glob
 `~/.claude/plugins/**/devteam/templates/review.md`).
 
-Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md` — quand un agent doit
-appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-test`,
-`conventions-git`, `adr`), transmets-lui le chemin absolu de son SKILL.md.
+Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`. Quand un agent doit
+appliquer une skill (`clean-code`, `clean-architecture`, `code-review`, `style-equipe`,
+`redaction-user-story`, `code-review-checklist`, `plan-de-test`, `conventions-git`, `adr`),
+transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs skills
+obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
-## Étape 0 — Préconditions
+## Étape 0 : Préconditions
 1. Si aucun identifiant n'est fourni, liste les stories `À faire` du sprint courant dans
    `docs/backlog.md` et demande laquelle réaliser.
 2. Vérifie que `docs/backlog.md`, `docs/architecture.md` et `CLAUDE.md` existent ; sinon,
@@ -35,7 +37,7 @@ appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-t
 
 ### a) Développement
 Appelle le(s) développeur(s) avec : l'identifiant de la story, l'itération N, les chemins
-`CLAUDE.md`, `docs/backlog.md`, `docs/architecture.md`, et — si N > 1 — les rapports
+`CLAUDE.md`, `docs/backlog.md`, `docs/architecture.md`, et, si N > 1, les rapports
 `docs/reviews/<story>.md` et/ou `docs/qa/<story>.md` à traiter.
 
 ### b) Préparation de la revue

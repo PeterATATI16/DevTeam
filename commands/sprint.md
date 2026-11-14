@@ -1,5 +1,5 @@
 ---
-description: Réalise toutes les stories d'un sprint — pour chacune, boucle développeur → tech lead → QA (3 itérations max), puis met à jour le backlog et le suivi.
+description: "Réalise toutes les stories d'un sprint : pour chacune, boucle développeur → tech lead → QA (3 itérations max), puis met à jour le backlog et le suivi."
 argument-hint: "[numéro de sprint]"
 disable-model-invocation: true
 ---
@@ -15,11 +15,13 @@ terminées dans `docs/backlog.md`).
 Dossier des modèles : `${CLAUDE_PLUGIN_ROOT}/templates/` (sinon, Glob
 `~/.claude/plugins/**/devteam/templates/review.md`).
 
-Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md` — quand un agent doit
-appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-test`,
-`conventions-git`, `adr`), transmets-lui le chemin absolu de son SKILL.md.
+Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`. Quand un agent doit
+appliquer une skill (`clean-code`, `clean-architecture`, `code-review`, `style-equipe`,
+`redaction-user-story`, `code-review-checklist`, `plan-de-test`, `conventions-git`, `adr`),
+transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs skills
+obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
-## Étape 0 — Préparation
+## Étape 0 : Préparation
 1. Vérifie que `docs/backlog.md`, `docs/architecture.md` et `CLAUDE.md` existent ; sinon,
    indique qu'il faut lancer `/devteam:nouveau-projet` et arrête-toi.
 2. Liste les stories du sprint non `Terminé`, triées par dépendances puis priorité

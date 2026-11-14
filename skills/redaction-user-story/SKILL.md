@@ -1,13 +1,13 @@
 ---
 name: redaction-user-story
-description: Rédiger des user stories de qualité (format « En tant que… je veux… afin de… », critères INVEST, critères d'acceptation Given/When/Then). À utiliser pour créer, découper ou relire un backlog.
+description: "Rédiger des user stories de qualité (format « En tant que… je veux… afin de… », critères INVEST, critères d'acceptation Given/When/Then). À utiliser pour créer, découper ou relire un backlog."
 ---
 
 # Rédaction de user stories
 
 ## Format
 ```markdown
-### US-012 — Déclarer un sinistre en ligne  `[back][front]`
+### US-012 : Déclarer un sinistre en ligne  `[back][front]`
 **En tant que** assuré connecté,
 **je veux** déclarer un sinistre automobile en joignant des photos,
 **afin de** lancer l'indemnisation sans me déplacer.
@@ -23,11 +23,11 @@ description: Rédiger des user stories de qualité (format « En tant que… je 
    **When** l'assuré la joint
    **Then** elle est refusée avant envoi avec l'indication de la taille maximale.
 
-**Estimation** : M — **Dépendances** : US-003 — **Règles** : RG-04, RG-05
-**Statut** : À faire — **Priorité** : — — **Sprint** : —
+**Estimation** : M · **Dépendances** : US-003 · **Règles** : RG-04, RG-05
+**Statut** : À faire · **Priorité** : à définir · **Sprint** : à définir
 ```
 
-Tags de périmètre : `[back]`, `[front]`, `[mobile]`, `[devops]` — ils servent à choisir
+Tags de périmètre : `[back]`, `[front]`, `[mobile]`, `[devops]`. Ils servent à choisir
 le développeur.
 
 ## Critères INVEST

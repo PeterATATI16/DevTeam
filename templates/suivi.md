@@ -1,4 +1,4 @@
-# Suivi du projet — <Nom du projet>
+# Suivi du projet : <Nom du projet>
 
 > Chef de projet · Date : AAAA-MM-JJ · Sprint courant : N
 

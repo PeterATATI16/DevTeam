@@ -1,5 +1,5 @@
 ---
-description: Lance uniquement le QA — écrit et exécute les tests, vérifie les critères d'acceptation d'une story (ou de tout le projet) et produit un rapport dans docs/qa/.
+description: "Lance uniquement le QA : écrit et exécute les tests, vérifie les critères d'acceptation d'une story (ou de tout le projet) et produit un rapport dans docs/qa/."
 argument-hint: "[id de story]"
 ---
 
@@ -13,9 +13,11 @@ Cible : **$ARGUMENTS** (si vide : toute la suite de tests du projet et les stori
 Dossier des modèles : `${CLAUDE_PLUGIN_ROOT}/templates/` (sinon, Glob
 `~/.claude/plugins/**/devteam/templates/qa.md`).
 
-Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md` — quand un agent doit
-appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-test`,
-`conventions-git`, `adr`), transmets-lui le chemin absolu de son SKILL.md.
+Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`. Quand un agent doit
+appliquer une skill (`clean-code`, `clean-architecture`, `code-review`, `style-equipe`,
+`redaction-user-story`, `code-review-checklist`, `plan-de-test`, `conventions-git`, `adr`),
+transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs skills
+obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
 ## Étapes
 1. Vérifie l'existence de `CLAUDE.md` (commandes de test) et de `docs/backlog.md`. S'ils

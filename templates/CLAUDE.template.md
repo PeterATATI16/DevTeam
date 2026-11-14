@@ -32,6 +32,11 @@ docs/      mémoire partagée de l'équipe devteam
 - Branches `feature/US-xxx-slug`, commits Conventional Commits (skill `conventions-git`).
 - Tests obligatoires pour chaque critère d'acceptation ; couverture ≥ 80 % sur le code métier.
 - Secrets uniquement via variables d'environnement (`.env.example` à jour).
+- Standards de code : skills devteam `clean-code` (simplicité, lisibilité, générique au bon moment)
+  et `clean-architecture` (couches domain, application, infrastructure, presentation, shared).
+- Avant d'écrire du code, chercher une brique réutilisable dans `src/shared/`.
+- Style (skill `style-equipe`) : aucun tiret long dans le texte, le code ou l'interface ;
+  aucune interface au « look IA » (dégradés violets, verre dépoli, emojis comme icônes).
 
 ## Mémoire partagée (docs/)
 | Fichier | Contenu | Auteur |

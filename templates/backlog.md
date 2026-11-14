@@ -1,4 +1,4 @@
-# Backlog — <Nom du projet>
+# Backlog : <Nom du projet>
 
 > Rédigé par : business-analyst (stories) et product-owner (priorités, sprints)
 > Statuts possibles : À faire · En cours · En revue · Bloqué · Terminé
@@ -21,7 +21,7 @@
 
 ## Stories
 
-### US-001 — <Titre>  `[back]`
+### US-001 : <Titre>  `[back]`
 **En tant que** …,
 **je veux** …,
 **afin de** ….
@@ -34,8 +34,8 @@
    **When** …
    **Then** …
 
-**Estimation** : M — **Dépendances** : aucune — **Règles** : RG-01
-**Priorité** : — — **Sprint** : — — **Statut** : À faire
+**Estimation** : M · **Dépendances** : aucune · **Règles** : RG-01
+**Priorité** : à définir · **Sprint** : à définir · **Statut** : À faire
 
-**Notes dev** : —
-**Revue** : — · **QA** : —
+**Notes dev** : aucune
+**Revue** : aucune · **QA** : aucun

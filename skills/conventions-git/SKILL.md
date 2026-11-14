@@ -1,6 +1,6 @@
 ---
 name: conventions-git
-description: Conventions git de l'équipe — nommage des branches, messages Conventional Commits, merge requests GitLab (titre, description, checklist). À utiliser pour créer une branche, committer ou préparer une merge request.
+description: "Conventions git de l'équipe : nommage des branches, messages Conventional Commits, merge requests GitLab (titre, description, checklist). À utiliser pour créer une branche, committer ou préparer une merge request."
 ---
 
 # Conventions git
@@ -17,7 +17,7 @@ description: Conventions git de l'équipe — nommage des branches, messages Con
 - La branche principale (`main`) est protégée : on n'y committe jamais directement.
 - Slug en minuscules, sans accents, mots séparés par des tirets.
 
-## Messages de commit — Conventional Commits 1.0
+## Messages de commit : Conventional Commits 1.0
 ```
 <type>(<portée>): <résumé à l'impératif, ≤ 72 caractères>
 
@@ -43,14 +43,14 @@ fichier généré, de secret ou de `.env`.
 **Description** :
 ```markdown
 ## Contexte
-US-012 — Déclarer un sinistre en ligne (lien vers docs/backlog.md)
+US-012 : Déclarer un sinistre en ligne (lien vers docs/backlog.md)
 
 ## Changements
 - …
 
 ## Vérifications
-- Revue : docs/reviews/US-012.md — APPROUVÉ (itération 2)
-- QA : docs/qa/US-012.md — VALIDÉ
+- Revue : docs/reviews/US-012.md : APPROUVÉ (itération 2)
+- QA : docs/qa/US-012.md : VALIDÉ
 - [ ] Pipeline vert
 - [ ] Migrations testées
 - [ ] Documentation mise à jour

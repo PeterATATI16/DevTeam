@@ -1,4 +1,4 @@
-# Cahier des charges — <Nom du projet>
+# Cahier des charges : <Nom du projet>
 
 > Rédigé par : business-analyst · Version : 0.1 · Date : AAAA-MM-JJ · Statut : Brouillon | Validé
 

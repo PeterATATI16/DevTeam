@@ -1,5 +1,5 @@
 ---
-description: Explique l'équipe virtuelle devteam, ses commandes et le déroulé type d'un projet.
+description: "Explique l'équipe virtuelle devteam, ses commandes et le déroulé type d'un projet."
 argument-hint: "[commande]"
 ---
 
@@ -21,6 +21,7 @@ aucun agent.
 | Dev mobile | `devteam:dev-mobile` | écrans Flutter (par défaut) + tests |
 | Tech lead | `devteam:tech-lead-reviewer` | `docs/reviews/<story>.md` (lecture seule) |
 | QA | `devteam:qa-testeur` | tests, `docs/qa/<story>.md` |
+| Expert cybersécurité | `devteam:expert-cybersecurite` | audit `docs/securite/<cible>.md` (lecture seule) |
 | DevOps | `devteam:devops` | Docker, `.gitlab-ci.yml`, déploiement |
 | Rédacteur technique | `devteam:redacteur-technique` | README, `docs/api.md`, CHANGELOG |
 | Chef de projet | `devteam:chef-de-projet` | `docs/suivi.md` |
@@ -33,6 +34,7 @@ aucun agent.
 | `/devteam:story <id>` | La même boucle pour une seule story |
 | `/devteam:review [fichiers\|branche]` | Revue de code seule |
 | `/devteam:tests [id]` | QA seul |
+| `/devteam:securite [id\|branche\|tout]` | Audit de sécurité seul |
 | `/devteam:deploy [env]` | DevOps, confirmation avant toute action irréversible |
 | `/devteam:doc [périmètre]` | Documentation |
 | `/devteam:statut` | Point d'avancement |
@@ -42,8 +44,16 @@ aucun agent.
 1. `/devteam:nouveau-projet "Application de gestion des sinistres…"` → valider specs, puis architecture.
 2. `/devteam:sprint 1` (ou `/devteam:story US-001` pour avancer story par story).
 3. `/devteam:statut` régulièrement.
-4. `/devteam:doc` puis `/devteam:deploy staging`.
+4. `/devteam:securite tout`, puis `/devteam:doc`, puis `/devteam:deploy staging`.
 5. Sprint suivant.
+
+## Standards imposés à tous les agents
+| Skill | Contenu | Utilisée par |
+|---|---|---|
+| `clean-code` | simplicité, lisibilité, générique au bon moment (règle de trois) | développeurs, architecte, QA, DevOps |
+| `clean-architecture` | couches, emplacement des fichiers, `shared/`, proportionnalité | développeurs, architecte |
+| `code-review` | grille et format Bloquant / À améliorer / Suggestion | tech lead, expert cybersécurité |
+| `style-equipe` | aucun tiret long, aucune interface au « look IA », organisation stricte | tous les agents |
 
 ## Principes
 - Les agents ne se parlent pas directement : ils échangent par les fichiers de `docs/`

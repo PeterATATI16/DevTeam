@@ -1,11 +1,11 @@
-# devteam — une équipe de développement virtuelle pour Claude Code
+# devteam : une équipe de développement virtuelle pour Claude Code
 
 `devteam` est un plugin Claude Code qui simule une entreprise de développement logiciel.
 Chaque rôle d'une vraie équipe devient un **subagent spécialisé**. Des **commandes slash**
 orchestrent le cycle de vie d'un projet : cadrage, conception, sprints, revue, tests,
 déploiement, documentation et suivi.
 
-> Version 0.1.0 — auteur : Peter ATATI
+> Version 0.2.0, auteur : Peter ATATI
 
 ---
 
@@ -13,7 +13,7 @@ déploiement, documentation et suivi.
 
 ```mermaid
 flowchart TB
-  U([👤 Vous — client / décideur])
+  U([Vous : client, décideur])
   O{{Session principale<br/>= orchestrateur<br/>commandes /devteam:*}}
   U <-->|validations ✋| O
 
@@ -29,6 +29,7 @@ flowchart TB
     DM[Dev mobile]
     TL[Tech lead reviewer]
     QA[QA testeur]
+    SEC[Expert cybersécurité]
   end
   subgraph Livraison
     DO[DevOps]
@@ -64,9 +65,10 @@ fichiers** dans le dépôt du projet.
 | 7 | `dev-mobile` | Écrans mobiles (Flutter par défaut) + tests | sonnet | code + Bash |
 | 8 | `tech-lead-reviewer` | Revue OWASP/qualité → `docs/reviews/<story>.md`, verdict | opus | **lecture seule** + écriture du rapport |
 | 9 | `qa-testeur` | Tests unitaires, intégration, e2e → `docs/qa/<story>.md` | sonnet | code de test + Bash |
-| 10 | `devops` | Docker, docker-compose, `.gitlab-ci.yml`, déploiement | sonnet | code + Bash |
-| 11 | `redacteur-technique` | README, `docs/api.md`, CHANGELOG | haiku | lecture/écriture docs |
-| 12 | `chef-de-projet` | Avancement, risques → `docs/suivi.md` | haiku | lecture + écriture du suivi |
+| 10 | `expert-cybersecurite` | Audit OWASP, secrets, dépendances, conteneurs, RGPD → `docs/securite/<cible>.md` | opus | **lecture seule** + scanners installés + écriture du rapport |
+| 11 | `devops` | Docker, docker-compose, `.gitlab-ci.yml`, déploiement | sonnet | code + Bash |
+| 12 | `redacteur-technique` | README, `docs/api.md`, CHANGELOG | haiku | lecture/écriture docs |
+| 13 | `chef-de-projet` | Avancement, risques → `docs/suivi.md` | haiku | lecture + écriture du suivi |
 
 ### Les commandes
 
@@ -77,6 +79,7 @@ fichiers** dans le dépôt du projet.
 | `/devteam:story <id>` | La même boucle pour une seule story |
 | `/devteam:review [fichiers\|branche]` | Tech lead seul |
 | `/devteam:tests [id]` | QA seul |
+| `/devteam:securite [id\|branche\|tout]` | Expert cybersécurité seul (proposé automatiquement avant un déploiement staging ou production) |
 | `/devteam:deploy [env]` | DevOps, avec confirmation action par action avant tout geste irréversible |
 | `/devteam:doc [périmètre]` | Rédacteur technique |
 | `/devteam:statut` | Chef de projet |
@@ -84,7 +87,19 @@ fichiers** dans le dépôt du projet.
 
 ### Les skills (procédures réutilisables)
 
-`redaction-user-story` · `code-review-checklist` · `plan-de-test` · `conventions-git` · `adr`
+**Standards de l'équipe** (priorités : simplicité, lisibilité, code générique et réutilisable, structure claire) :
+
+| Skill | Contenu | Agents qui doivent l'appliquer |
+|---|---|---|
+| `clean-code` | KISS, YAGNI, règle de trois pour le générique, nommage, fonctions courtes, erreurs typées, checklist en 10 points | dev-backend, dev-frontend, dev-mobile (avant de coder), architecte, qa-testeur, devops |
+| `clean-architecture` | règle de dépendance, structure `domain/application/infrastructure/presentation/shared`, ports et adaptateurs, proportionnalité, exemple complet | dev-backend, dev-frontend, dev-mobile (avant de créer un fichier), architecte |
+| `code-review` | grille fondée sur les deux précédentes, format fixe Bloquant / À améliorer / Suggestion, sur-ingénierie et duplication | tech-lead-reviewer, expert-cybersecurite |
+| `style-equipe` | interdiction des tirets longs et des tics d'écriture « IA », interfaces sans « look IA », organisation stricte des livrables | les 13 agents |
+
+**Procédures métier** : `redaction-user-story` (BA) · `code-review-checklist` (OWASP, tech lead et sécurité) · `plan-de-test` (QA) · `conventions-git` (développeurs) · `adr` (architecte)
+
+Chaque agent a une section « Skills obligatoires » dans son prompt. Elle lui indique quelle skill lire,
+et à quel moment, via son chemin `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`.
 
 ### La boucle de réalisation d'une story
 
@@ -112,6 +127,7 @@ mon-projet/
     ├── maquettes/         # maquettes HTML/CSS             ← ux-ui-designer
     ├── reviews/           # rapports de revue              ← tech-lead-reviewer
     ├── qa/                # rapports de test               ← qa-testeur
+    ├── securite/          # audits de sécurité             ← expert-cybersecurite
     └── suivi.md           # avancement et risques          ← chef-de-projet
 ```
 
@@ -185,7 +201,7 @@ missionnent un expert et valident l'indemnisation ; tableau de bord des délais.
 ```
 
 Déroulé :
-1. **Business Analyst** : il produit `docs/specs.md`, avec les acteurs (assuré, gestionnaire, expert, responsable), les règles de gestion et les exigences RGPD. Il produit aussi `docs/backlog.md`, avec environ 15 stories, par exemple `US-004 — Déclarer un sinistre en ligne`. Il pose ses questions ouvertes, par exemple : « Les franchises sont-elles calculées par l'application ? » ou « Faut-il une intégration avec le système de contrats existant ? ».
+1. **Business Analyst** : il produit `docs/specs.md`, avec les acteurs (assuré, gestionnaire, expert, responsable), les règles de gestion et les exigences RGPD. Il produit aussi `docs/backlog.md`, avec environ 15 stories, par exemple `US-004 : Déclarer un sinistre en ligne`. Il pose ses questions ouvertes, par exemple : « Les franchises sont-elles calculées par l'application ? » ou « Faut-il une intégration avec le système de contrats existant ? ».
 2. **Product Owner** : il définit le MVP (déclaration, suivi du dossier, instruction par le gestionnaire) et planifie le sprint 1 (authentification, déclaration auto, liste des dossiers).
 3. ✋ **Vous validez** les specs et le backlog, ou demandez des ajustements.
 4. **Architecte** : il produit `docs/architecture.md`, par exemple avec NestJS, PostgreSQL, React et Flutter, un stockage S3-compatible pour les photos et une authentification OIDC. Il écrit les ADR `0001-…` à `0005-…` et le `CLAUDE.md` du projet.
@@ -197,7 +213,7 @@ Déroulé :
 /devteam:sprint 1
 ```
 Pour `US-004` :
-- itération 1 : `dev-backend` implémente `POST /api/v1/sinistres`. Le tech lead rend **À CORRIGER** avec la remarque R-02 BLOQUANT, une faille IDOR sur `GET /sinistres/:id`.
+- itération 1 : `dev-backend` implémente `POST /api/v1/sinistres`. Le tech lead rend **À CORRIGER** avec la remarque R-02 (Bloquant), une faille IDOR sur `GET /sinistres/:id`.
 - itération 2 : la correction est faite et le tech lead rend **APPROUVÉ**. Le QA rend **EN ÉCHEC** sur `QA-01`, car une photo de plus de 10 Mo est acceptée.
 - itération 3 : la correction est faite, le tech lead rend **APPROUVÉ** et le QA rend **VALIDÉ**. La story passe à `Terminé`.
 
@@ -208,6 +224,32 @@ Pour `US-004` :
 /devteam:deploy staging
 ```
 Le DevOps prépare `Dockerfile`, `docker-compose.yml`, `.gitlab-ci.yml` et `.env.example`. Il liste les actions à confirmer, par exemple `git push` puis le déclenchement du job `deploy:staging`. Vous les validez une par une.
+
+---
+
+## Vérifier qu'un agent applique les standards
+
+Depuis un dossier de test vide, lancez l'agent `dev-backend` seul :
+
+```bash
+mkdir -p /tmp/devteam-test && cd /tmp/devteam-test && git init -q
+```
+```bash
+claude -p "Test des standards, sans rien écrire sur le disque. 1) Cite mot pour mot le point 1 de la checklist de la skill clean-code. 2) Selon clean-architecture, dans quel dossier va un adaptateur PostgreSQL ? 3) Écris en TypeScript la pagination des listes de sinistres, de contrats et d'assurés." --plugin-dir /chemin/vers/DevTeam --agent devteam:dev-backend --allowedTools=Read | tee sortie.txt
+```
+```bash
+grep -c $'\xe2\x80\x94\|\xe2\x80\x93' sortie.txt
+```
+
+Résultat attendu :
+1. La citation « J'ai cherché une brique existante dans `shared/` avant d'écrire. » prouve que la skill a été lue.
+2. La réponse est `infrastructure/`, avec le port dans `domain/`.
+3. Une **seule** fonction générique `paginate<T>()` dans `shared/` (règle de trois), et non trois fonctions recopiées.
+4. Le `grep` final affiche `0` : aucun tiret long.
+
+Une fois le plugin installé, remplacez `--plugin-dir …` par rien. Pour le relecteur, faites le même
+test avec `--agent devteam:tech-lead-reviewer` sur un fichier volontairement sur-ingénieré.
+La sortie doit suivre le format Bloquant / À améliorer / Suggestion.
 
 ---
 
@@ -225,11 +267,16 @@ Le DevOps prépare `Dockerfile`, `docker-compose.yml`, `.gitlab-ci.yml` et `.env
 ## Le hook qualité
 
 `hooks/hooks.json` déclare un hook `PostToolUse` sur `Edit|Write|MultiEdit`. Il lance
-[`hooks/lint-si-present.sh`](hooks/lint-si-present.sh), qui :
+[`hooks/lint-si-present.sh`](hooks/lint-si-present.sh), qui lit le chemin du fichier modifié
+sur l'entrée standard (avec `jq`, sinon `python`, sinon `sed`) et fait deux contrôles.
 
-- lit le chemin du fichier modifié sur l'entrée standard, avec `jq`, sinon `python`, sinon `sed` ;
-- ignore `docs/`, `node_modules/`, `dist/`, `build/`, `vendor/` et `.dart_tool/` ;
-- applique l'outil **s'il est installé dans le projet ou sur la machine** :
+**1. Style : tirets longs interdits.** Si le fichier (code, Markdown, HTML, CSS, YAML…)
+contient un tiret cadratin ou demi-cadratin, le hook renvoie les lignes concernées à Claude
+(code 2), qui doit les corriger. La skill `style-equipe` est exclue, car elle montre ces
+caractères en exemple.
+
+**2. Formatage et lint.** Hors `docs/`, `node_modules/`, `dist/`, `build/`, `vendor/` et
+`.dart_tool/`, il applique l'outil **s'il est installé dans le projet ou sur la machine** :
 
 | Fichiers | Outils (dans l'ordre) |
 |---|---|
@@ -241,10 +288,13 @@ Le DevOps prépare `Dockerfile`, `docker-compose.yml`, `.gitlab-ci.yml` et `.env
 | Kotlin | `ktlint -F` |
 | Shell | `shfmt -w` |
 
-- **ne bloque jamais** : si un outil est absent ou échoue, le hook sort en code 0.
+Le hook **ne bloque jamais** : si un outil est absent ou échoue, il sort en code 0. Le code 2
+d'un hook `PostToolUse` ne bloque rien non plus : l'édition reste appliquée, et Claude reçoit
+le message.
 
 Variables d'environnement :
 - `DEVTEAM_HOOK_DISABLE=1` désactive le hook.
+- `DEVTEAM_STYLE_CHECK=0` désactive le contrôle des tirets longs.
 - `DEVTEAM_LINT_FEEDBACK=1` transmet à Claude les erreurs de lint restantes (code de sortie 2). L'édition est conservée, et Claude peut corriger.
 
 Il est portable sous Linux, macOS et Windows (Git Bash). Les chemins Windows sont convertis avec `cygpath`.
@@ -263,24 +313,30 @@ Il est portable sous Linux, macOS et Windows (Git Bash). Les chemins Windows son
 Exemple : pour faire du `dev-mobile` un développeur React Native, remplacez les mentions
 de Flutter dans son prompt, ou fixez la technologie dans `docs/architecture.md`.
 
-### Ajouter un agent (exemple : expert sécurité)
-1. Créez `agents/expert-securite.md` :
+### Ajouter un agent (exemple : expert accessibilité)
+1. Créez `agents/expert-accessibilite.md` :
    ```markdown
    ---
-   name: expert-securite
-   description: Expert sécurité. À utiliser avant une mise en production pour un audit (dépendances, secrets, OWASP ASVS) produisant docs/securite.md.
+   name: expert-accessibilite
+   description: "Expert accessibilité. À utiliser avant une livraison pour auditer les écrans (WCAG 2.1 AA) et produire docs/accessibilite.md."
    tools: Read, Glob, Grep, Write
-   model: opus
+   model: sonnet
    ---
-   # Rôle : Expert sécurité
+   # Rôle : Expert accessibilité
+
+   ## Skills obligatoires
+   - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md`.
+
    ## Mission …
    ## Entrées attendues …
    ## Livrables …
+   ## Format de sortie …
+   ## Checklist qualité …
    ## Ce que tu ne dois PAS faire …
    ```
-2. Pour l'orchestrer, ajoutez une commande `commands/audit-securite.md`, qui appelle
-   l'agent `devteam:expert-securite`. Vous pouvez aussi l'insérer comme étape dans
-   `commands/deploy.md`.
+   Mettez la `description` entre guillemets si elle contient « : ».
+2. Pour l'orchestrer, ajoutez une commande `commands/accessibilite.md` qui appelle
+   l'agent `devteam:expert-accessibilite`, sur le modèle de `commands/securite.md`.
 3. Si besoin, ajoutez un modèle dans `templates/` et une ligne dans `commands/aide.md`.
 4. Vérifiez avec `claude plugin validate .`, puis incrémentez la version dans
    `.claude-plugin/plugin.json` et `CHANGELOG.md`.
@@ -296,9 +352,9 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 ├── .claude-plugin/
 │   ├── plugin.json          # manifeste du plugin
 │   └── marketplace.json     # marketplace pointant vers ce dépôt
-├── agents/                  # 12 subagents
-├── commands/                # 9 commandes /devteam:*
-├── skills/                  # 5 skills (SKILL.md)
+├── agents/                  # 13 subagents
+├── commands/                # 10 commandes /devteam:*
+├── skills/                  # 9 skills (SKILL.md, et references/ si besoin)
 ├── hooks/                   # hooks.json + lint-si-present.sh
 ├── templates/               # modèles de la mémoire partagée
 ├── README.md

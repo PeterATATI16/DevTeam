@@ -1,4 +1,4 @@
-# ADR-NNNN — <Décision formulée en une phrase>
+# ADR-NNNN : <Décision formulée en une phrase>
 
 - **Statut** : Proposé
 - **Date** : AAAA-MM-JJ
@@ -9,8 +9,8 @@
 <Faits, contraintes, exigences (ENF-xx) qui imposent une décision.>
 
 ## Options envisagées
-1. **Option A** — avantages : … ; inconvénients : …
-2. **Option B** — avantages : … ; inconvénients : …
+1. **Option A** : avantages …, inconvénients …
+2. **Option B** : avantages …, inconvénients …
 
 ## Décision
 Nous retenons **…** parce que …

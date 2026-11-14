@@ -1,5 +1,5 @@
 ---
-description: Lance le chef de projet — point d'avancement (fait, en cours, bloqué, risques) dans docs/suivi.md.
+description: "Lance le chef de projet : point d'avancement (fait, en cours, bloqué, risques) dans docs/suivi.md."
 ---
 
 # /devteam:statut
@@ -9,9 +9,11 @@ Tu es l'orchestrateur devteam. Lance **uniquement** l'agent `devteam:chef-de-pro
 Dossier des modèles : `${CLAUDE_PLUGIN_ROOT}/templates/` (sinon, Glob
 `~/.claude/plugins/**/devteam/templates/suivi.md`).
 
-Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md` — quand un agent doit
-appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-test`,
-`conventions-git`, `adr`), transmets-lui le chemin absolu de son SKILL.md.
+Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`. Quand un agent doit
+appliquer une skill (`clean-code`, `clean-architecture`, `code-review`, `style-equipe`,
+`redaction-user-story`, `code-review-checklist`, `plan-de-test`, `conventions-git`, `adr`),
+transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs skills
+obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
 ## Étapes
 1. Si `docs/backlog.md` n'existe pas, indique qu'aucun projet devteam n'est initialisé

@@ -1,5 +1,5 @@
 ---
-description: Lance le rédacteur technique — README du projet, documentation API (docs/api.md) et notes de version (CHANGELOG.md).
+description: "Lance le rédacteur technique : README du projet, documentation API (docs/api.md) et notes de version (CHANGELOG.md)."
 argument-hint: "[readme | api | changelog | tout] [version]"
 ---
 

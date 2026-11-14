@@ -1,6 +1,6 @@
 ---
 name: adr
-description: Format et cycle de vie des Architecture Decision Records (ADR) dans docs/adr/. À utiliser pour documenter, remplacer ou relire une décision d'architecture.
+description: "Format et cycle de vie des Architecture Decision Records (ADR) dans docs/adr/. À utiliser pour documenter, remplacer ou relire une décision d'architecture."
 ---
 
 # Architecture Decision Records (ADR)
@@ -16,7 +16,7 @@ tests, choix d'une bibliothèque centrale.
 
 ## Format (inspiré de Michael Nygard / MADR)
 ```markdown
-# ADR-0003 — Utiliser PostgreSQL comme base de données principale
+# ADR-0003 : Utiliser PostgreSQL comme base de données principale
 
 - **Statut** : Proposé | Accepté | Déprécié | Remplacé par ADR-00xx
 - **Date** : 2026-11-14
@@ -28,9 +28,9 @@ Faits et contraintes qui imposent une décision (exigences ENF-xx, volumétrie,
 compétences de l'équipe, coûts, réglementation).
 
 ## Options envisagées
-1. **PostgreSQL** — + transactions, JSONB, écosystème ; − administration.
-2. **MongoDB** — + schéma souple ; − intégrité relationnelle pour les contrats.
-3. **SQLite** — + simplicité ; − concurrence d'écriture.
+1. **PostgreSQL** : (+) transactions, JSONB, écosystème ; (-) administration.
+2. **MongoDB** : (+) schéma souple ; (-) intégrité relationnelle pour les contrats.
+3. **SQLite** : (+) simplicité ; (-) concurrence d'écriture.
 
 ## Décision
 Nous retenons PostgreSQL 16 parce que …

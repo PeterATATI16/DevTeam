@@ -1,5 +1,5 @@
 {
-  "description": "devteam : formate/linte automatiquement les fichiers de code après chaque Edit ou Write, si l'outil du projet est installé. Jamais bloquant.",
+  "description": "devteam : après chaque Edit ou Write, signale les tirets longs interdits (skill style-equipe) et formate/linte le fichier si l'outil du projet est installé. Jamais bloquant.",
   "hooks": {
     "PostToolUse": [
       {

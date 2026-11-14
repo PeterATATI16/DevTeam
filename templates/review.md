@@ -1,4 +1,4 @@
-# Revue de code — <US-xxx> — itération <N>
+# Revue de code : <US-xxx>, itération <N>
 
 > Relecteur : tech-lead-reviewer · Date : AAAA-MM-JJ
 > Périmètre : branche `<branche>` · diff `docs/reviews/<US-xxx>.diff` · <n> fichiers
@@ -7,9 +7,9 @@
 
 | Sévérité | Nombre |
 |---|---|
-| BLOQUANT | 0 |
-| MAJEUR | 0 |
-| MINEUR | 0 |
+| Bloquant | 0 |
+| À améliorer | 0 |
+| Suggestion | 0 |
 
 ## Suivi des remarques précédentes (itération > 1)
 | ID | Statut |
@@ -22,7 +22,7 @@
 | CA-1 | ✅ | ✅ | |
 
 ## Remarques
-### R-01 — BLOQUANT — `chemin/fichier.ext:ligne`
+### R-01 | Bloquant | `chemin/fichier.ext:ligne`
 - **Problème** :
 - **Pourquoi** :
 - **Correction attendue** :

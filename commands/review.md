@@ -1,5 +1,5 @@
 ---
-description: Lance uniquement le tech lead relecteur sur des fichiers, une branche ou les changements en cours, et produit un rapport dans docs/reviews/.
+description: "Lance uniquement le tech lead relecteur sur des fichiers, une branche ou les changements en cours, et produit un rapport dans docs/reviews/."
 argument-hint: "[fichiers… | branche]"
 ---
 
@@ -12,9 +12,11 @@ Cible : **$ARGUMENTS**
 Dossier des modèles : `${CLAUDE_PLUGIN_ROOT}/templates/` (sinon, Glob
 `~/.claude/plugins/**/devteam/templates/review.md`).
 
-Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md` — quand un agent doit
-appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-test`,
-`conventions-git`, `adr`), transmets-lui le chemin absolu de son SKILL.md.
+Skills du plugin : `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`. Quand un agent doit
+appliquer une skill (`clean-code`, `clean-architecture`, `code-review`, `style-equipe`,
+`redaction-user-story`, `code-review-checklist`, `plan-de-test`, `conventions-git`, `adr`),
+transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs skills
+obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
 ## Étapes
 1. Détermine le périmètre :
@@ -28,7 +30,7 @@ appliquer une skill (`redaction-user-story`, `code-review-checklist`, `plan-de-t
 4. Appelle `devteam:tech-lead-reviewer` avec : le nom du rapport, le diff et/ou la liste
    des fichiers, `CLAUDE.md` et `docs/architecture.md` s'ils existent, le modèle
    `templates/review.md`.
-5. Affiche le verdict, le nombre de remarques par sévérité, les remarques BLOQUANTES
+5. Affiche le verdict, le nombre de remarques par sévérité, les remarques Bloquantes
    résumées et le chemin du rapport.
 
 Ne lance aucune correction : propose `/devteam:story <id>` si l'utilisateur souhaite

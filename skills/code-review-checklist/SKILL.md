@@ -1,6 +1,6 @@
 ---
 name: code-review-checklist
-description: Checklist détaillée de revue de code (sécurité OWASP Top 10, exactitude, qualité, conventions, performance, tests) avec règles de sévérité et de verdict. À utiliser pour relire un diff ou une story.
+description: "Checklist détaillée de revue de code (sécurité OWASP Top 10, exactitude, qualité, conventions, performance, tests) avec règles de sévérité et de verdict. À utiliser pour relire un diff ou une story."
 ---
 
 # Checklist de revue de code
@@ -8,16 +8,16 @@ description: Checklist détaillée de revue de code (sécurité OWASP Top 10, ex
 ## Sévérités et verdict
 - **BLOQUANT** : sécurité, bug, critère d'acceptation non respecté, test manquant sur un
   critère, violation d'architecture/ADR, secret versionné.
-- **MAJEUR** : maintenabilité, performance, gestion d'erreur insuffisante.
-- **MINEUR** : style, nommage, suggestion.
-- Verdict **À CORRIGER** si ≥ 1 BLOQUANT ou > 3 MAJEURS ; sinon **APPROUVÉ**.
+- **À AMÉLIORER** : maintenabilité, performance, gestion d'erreur insuffisante.
+- **SUGGESTION** : style, nommage, suggestion.
+- Verdict **À CORRIGER** si ≥ 1 BLOQUANT ou > 3 « À améliorer » ; sinon **APPROUVÉ**.
 
 ## 1. Exactitude fonctionnelle
 - [ ] Chaque critère Given/When/Then de la story est implémenté.
 - [ ] Les règles de gestion (RG-xx) sont respectées, y compris les limites.
 - [ ] Les cas d'erreur renvoient le comportement attendu (code HTTP, message).
 
-## 2. Sécurité (OWASP Top 10 — 2021)
+## 2. Sécurité (OWASP Top 10, édition 2021)
 - [ ] **A01 Contrôle d'accès** : autorisation vérifiée côté serveur sur chaque ressource
       (pas d'IDOR : l'utilisateur ne peut accéder qu'à ses données).
 - [ ] **A02 Cryptographie** : mots de passe en bcrypt/argon2, TLS supposé, pas d'algorithme obsolète.
@@ -63,8 +63,8 @@ description: Checklist détaillée de revue de code (sécurité OWASP Top 10, ex
 
 ## Rédiger une remarque
 ```
-R-03 — BLOQUANT — src/sinistres/controller.ts:42
+R-03 | Bloquant | src/sinistres/controller.ts:42
 Problème : l'endpoint GET /sinistres/:id ne vérifie pas que le sinistre appartient à l'assuré.
-Pourquoi : IDOR (OWASP A01) — un assuré peut lire les sinistres d'autrui.
+Pourquoi : IDOR (OWASP A01) : un assuré peut lire les sinistres d'autrui.
 Correction attendue : filtrer par `assureId` de l'utilisateur authentifié ; 404 sinon ; test associé.
 ```

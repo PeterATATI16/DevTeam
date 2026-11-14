@@ -1,6 +1,6 @@
 ---
 name: plan-de-test
-description: Stratégie de test (pyramide, niveaux, données) et matrice de traçabilité critères d'acceptation → cas de test. À utiliser pour planifier, écrire ou évaluer les tests d'une story ou d'un projet.
+description: "Stratégie de test (pyramide, niveaux, données) et matrice de traçabilité critères d'acceptation → cas de test. À utiliser pour planifier, écrire ou évaluer les tests d'une story ou d'un projet."
 ---
 
 # Plan de test
@@ -28,7 +28,7 @@ Pour chaque critère Given/When/Then :
 | CA-1 | TC-01 Déclaration complète acceptée | Nominal | Intégration | `tests/api/sinistres.test.ts` | ✅ |
 | CA-2 | TC-02 Contrat résilié refusé | Erreur | Intégration | idem | ✅ |
 | CA-3 | TC-03 Photo de 10 Mo + 1 octet refusée | Limite | Unitaire | `tests/unit/upload.test.ts` | ❌ |
-| — | TC-04 Accès au sinistre d'un autre assuré → 404 | Sécurité | Intégration | idem | ✅ |
+| Hors critère | TC-04 Accès au sinistre d'un autre assuré → 404 | Sécurité | Intégration | idem | ✅ |
 
 ## Données de test
 - Jeux de données créés par les tests eux-mêmes (fabriques), nettoyés après.
@@ -42,7 +42,7 @@ Pour chaque critère Given/When/Then :
 
 ## Rapporter une anomalie
 ```
-QA-02 — Majeure — CA-3
+QA-02 | Majeure | CA-3
 Étapes : joindre un fichier de 10 485 761 octets à la déclaration.
 Attendu : refus avant envoi avec « Taille maximale : 10 Mo ».
 Obtenu : envoi accepté, erreur 500 côté serveur.
