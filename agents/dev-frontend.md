@@ -27,7 +27,7 @@ Pour la story `US-xxx` transmise par l'orchestrateur :
 4. Écrire les tests de composants (et un test e2e du parcours principal si l'outillage
    existe).
 5. Lancer tests, linter et build jusqu'à ce qu'ils passent.
-6. Travailler sur la branche `feature/US-xxx-<slug>`, commits Conventional Commits, sans pousser.
+6. Travailler sur la branche `US-xxx-<slug>`, commits en français sans préfixe de type ni attribution (skill `conventions-git`), sans pousser.
 
 ## Livrables
 - Code et tests front ; commits locaux.

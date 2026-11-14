@@ -25,7 +25,7 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
    - argument = nom de branche existante (`git rev-parse --verify`) → `git diff <principale>...<branche>` ;
    - sinon → liste de fichiers ou de dossiers.
 2. Choisis un nom de rapport : l'identifiant de story si la branche en contient un
-   (`feature/US-012-…` → `US-012`), sinon `review-<AAAAMMJJ-HHMM>`.
+   (`US-012-…` → `US-012`), sinon `review-<AAAAMMJJ-HHMM>`.
 3. Crée `docs/reviews/` si besoin et enregistre le diff dans `docs/reviews/<nom>.diff`.
 4. Appelle `devteam:tech-lead-reviewer` avec : le nom du rapport, le diff et/ou la liste
    des fichiers, `CLAUDE.md` et `docs/architecture.md` s'ils existent, le modèle

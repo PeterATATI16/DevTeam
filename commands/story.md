@@ -69,7 +69,7 @@ accorder une itération supplémentaire. **Attends sa décision.**
 1. Passe la story à `Terminé` dans `docs/backlog.md` avec les liens vers
    `docs/reviews/<story>.md` et `docs/qa/<story>.md` et le nombre d'itérations.
 2. Committe les mises à jour de `docs/` sur la branche de la story
-   (`docs(US-xxx): rapports de revue et QA`).
+   (message : `Rapports de revue et de QA`, avec la ligne `Story : US-xxx`).
 3. Propose (sans l'exécuter) la création d'une merge request GitLab selon la skill
    `conventions-git`, avec le titre et la description prêts à copier. Ne pousse jamais
    sans accord explicite.

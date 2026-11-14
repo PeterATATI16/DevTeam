@@ -9,7 +9,7 @@
       "name": "devteam",
       "source": "./",
       "description": "Équipe de développement virtuelle : 13 agents spécialisés, standards clean code et clean architecture, commandes d'orchestration du cycle de vie d'un projet.",
-      "version": "0.3.0"
+      "version": "0.4.0"
     }
   ]
 }

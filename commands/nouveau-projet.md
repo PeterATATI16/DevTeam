@@ -74,8 +74,8 @@ entrées `docs/specs.md`, `docs/backlog.md`, `docs/architecture.md` ; sortie
 `docs/maquettes/`. Sinon (API seule), saute cette étape et dis-le.
 
 ## Étape 5 : Clôture
-1. Propose de committer les documents sur une branche `docs/cadrage`
-   (Conventional Commits : `docs: cadrage initial du projet`). Ne committe qu'avec l'accord
+1. Propose de committer les documents sur une branche `cadrage-initial`
+   (message : `Cadrage initial du projet`, skill `conventions-git`). Ne committe qu'avec l'accord
    de l'utilisateur, ne pousse jamais.
 2. Résume les fichiers produits et indique la suite : `/devteam:sprint 1`.
 

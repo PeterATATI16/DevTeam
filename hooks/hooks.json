@@ -1,6 +1,18 @@
 {
-  "description": "devteam : après chaque Edit ou Write, signale les tirets longs interdits (skill style-equipe) et formate/linte le fichier si l'outil du projet est installé. Jamais bloquant.",
+  "description": "devteam : bloque les commandes git contraires à la skill conventions-git (attribution, préfixe de type, branche feat/…) ; après chaque Edit ou Write, signale les tirets longs et formate/linte le fichier si l'outil du projet est installé.",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/controle-git.sh\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",

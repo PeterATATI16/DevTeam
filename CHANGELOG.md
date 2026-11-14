@@ -5,6 +5,18 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions : [S
 
 ## [Non publié]
 
+## [0.4.0] - 2026-11-14
+### Modifié
+- Skill `conventions-git` réécrite : branches nommées par l'identifiant traité
+  (`US-012-declaration-sinistre`), commits en français commençant par un nom d'action,
+  sans préfixe de type (`feat:`…) ni ligne d'attribution, sans mention d'IA.
+- Agents développeurs, commandes, checklist de revue et modèle `CLAUDE.template.md` alignés
+  sur cette convention.
+
+### Ajouté
+- Hook `PreToolUse` `controle-git.sh` qui refuse les commits et branches non conformes
+  (`DEVTEAM_GIT_CHECK=0` pour le couper).
+
 ## [0.3.0] - 2026-11-14
 ### Ajouté
 - Mode CEO : agent `coo`, interlocuteur unique du CEO, prévu pour tourner comme session

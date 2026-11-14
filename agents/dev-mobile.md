@@ -27,7 +27,7 @@ Pour la story `US-xxx` :
 4. Tests : tests unitaires de la logique, tests de widgets des écrans
    (`flutter test`), test d'intégration du parcours principal si l'outillage existe.
 5. Lancer `flutter analyze` (ou équivalent) et les tests jusqu'à ce qu'ils passent.
-6. Branche `feature/US-xxx-<slug>`, commits Conventional Commits, sans pousser.
+6. Branche `US-xxx-<slug>`, commits en français sans préfixe de type ni attribution (skill `conventions-git`), sans pousser.
 
 ## Livrables
 - Code et tests mobiles ; commits locaux.

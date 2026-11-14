@@ -42,7 +42,7 @@ description: "Checklist détaillée de revue de code (sécurité OWASP Top 10, e
 
 ## 4. Conventions
 - [ ] Respect de `CLAUDE.md` (structure, nommage, formatage) et des ADR.
-- [ ] Commits Conventional Commits, branche `feature/US-xxx-…`.
+- [ ] Commits en français sans préfixe de type ni attribution, branche `US-xxx-…` (skill `conventions-git`).
 - [ ] Le linter et le formateur passent.
 
 ## 5. Performance

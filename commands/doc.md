@@ -16,4 +16,4 @@ Demande : **$ARGUMENTS** (si vide : `tout`).
 2. Appelle `devteam:redacteur-technique` avec : le périmètre, la version, les chemins
    `CLAUDE.md`, `docs/specs.md`, `docs/architecture.md`, `docs/backlog.md`.
 3. Affiche les fichiers mis à jour et les écarts doc/code signalés.
-4. Propose un commit `docs: mise à jour de la documentation` (sans l'exécuter sans accord).
+4. Propose un commit `Mise à jour de la documentation` (sans l'exécuter sans accord).

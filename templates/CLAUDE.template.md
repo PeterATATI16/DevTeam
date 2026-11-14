@@ -29,7 +29,8 @@ docs/      mémoire partagée de l'équipe devteam
 
 ## Conventions
 - Code et identifiants en anglais, documentation et messages utilisateur en français.
-- Branches `feature/US-xxx-slug`, commits Conventional Commits (skill `conventions-git`).
+- Branches `US-xxx-slug`, commits en français sans préfixe de type (`feat:`…) ni ligne
+  d'attribution `Co-Authored-By`, sans mention d'IA (skill `conventions-git`).
 - Tests obligatoires pour chaque critère d'acceptation ; couverture ≥ 80 % sur le code métier.
 - Secrets uniquement via variables d'environnement (`.env.example` à jour).
 - Standards de code : skills devteam `clean-code` (simplicité, lisibilité, générique au bon moment)

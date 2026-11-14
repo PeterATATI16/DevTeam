@@ -26,8 +26,8 @@ Pour la story `US-xxx` transmise par l'orchestrateur :
 4. Écrire les tests unitaires (et d'intégration de l'API si l'architecture le prévoit)
    couvrant chaque critère d'acceptation, y compris les cas d'erreur.
 5. Lancer les tests et le linter du projet (commandes dans `CLAUDE.md`) jusqu'à ce qu'ils passent.
-6. Travailler sur une branche `feature/US-xxx-<slug>` (skill `conventions-git`) et
-   committer avec des messages Conventional Commits. Ne jamais pousser.
+6. Travailler sur une branche `US-xxx-<slug>` (skill `conventions-git`) et committer
+   en français, sans préfixe de type ni ligne d'attribution. Ne jamais pousser.
 
 ## Entrées attendues
 - Identifiant de la story, numéro d'itération (1, 2 ou 3), et rapports de revue/QA
@@ -50,7 +50,7 @@ Pour la story `US-xxx` transmise par l'orchestrateur :
 ## Format de sortie
 ```
 ## Résultat dev-backend : US-xxx (itération N)
-- Branche : feature/US-xxx-…
+- Branche : US-xxx-…
 - Fichiers modifiés : …
 - Tests : X passés / Y (commande : …)
 - Lint : OK / KO

@@ -5,7 +5,7 @@ Chaque rôle d'une vraie équipe devient un **subagent spécialisé**. Des **com
 orchestrent le cycle de vie d'un projet : cadrage, conception, sprints, revue, tests,
 déploiement, documentation et suivi.
 
-> Version 0.3.0, auteur : Peter ATATI
+> Version 0.4.0, auteur : Peter ATATI
 
 ---
 
@@ -353,9 +353,35 @@ La sortie doit suivre le format Bloquant / À améliorer / Suggestion.
 
 ---
 
-## Le hook qualité
+## Les hooks
 
-`hooks/hooks.json` déclare un hook `PostToolUse` sur `Edit|Write|MultiEdit`. Il lance
+`hooks/hooks.json` déclare deux hooks, actifs dès que le plugin est activé.
+
+### Conventions git (avant chaque commande Bash)
+
+Un hook `PreToolUse` sur `Bash` lance [`hooks/controle-git.sh`](hooks/controle-git.sh). Il
+**refuse** la commande, qui n'est donc pas exécutée, et renvoie le motif à Claude dans trois cas :
+- un commit contient une ligne d'attribution (`Co-Authored-By`, « Generated with ») ou une mention de Claude ;
+- le résumé d'un commit commence par un préfixe de type (`feat:`, `fix(auth):`, `docs:` …) ;
+- une branche créée est préfixée par un type (`feat/`, `feature/`, `fix/`, `docs/` …).
+
+Il lit le message passé par `-m`, par un heredoc ou par un fichier `-F`. Les conventions
+attendues sont celles de la skill `conventions-git` : branches `US-012-declaration-sinistre`,
+commits « Ajout de la déclaration de sinistre avec photos ».
+
+Pour que Claude Code n'ajoute pas lui-même sa ligne de co-auteur, ajoutez aussi ce réglage
+dans `.claude/settings.json` du projet ou dans `~/.claude/settings.json` :
+
+```json
+{ "attribution": { "commit": "", "pr": "" } }
+```
+
+`attribution` remplace l'ancien réglage `includeCoAuthoredBy`, désormais obsolète. Même sans ce réglage,
+le hook refuse tout commit qui contient la ligne de co-auteur.
+
+### Qualité (après chaque Edit ou Write)
+
+Un hook `PostToolUse` sur `Edit|Write|MultiEdit` lance
 [`hooks/lint-si-present.sh`](hooks/lint-si-present.sh), qui lit le chemin du fichier modifié
 sur l'entrée standard (avec `jq`, sinon `python`, sinon `sed`) et fait deux contrôles.
 
@@ -384,6 +410,7 @@ le message.
 Variables d'environnement :
 - `DEVTEAM_HOOK_DISABLE=1` désactive le hook.
 - `DEVTEAM_STYLE_CHECK=0` désactive le contrôle des tirets longs.
+- `DEVTEAM_GIT_CHECK=0` désactive le contrôle des commandes git.
 - `DEVTEAM_LINT_FEEDBACK=1` transmet à Claude les erreurs de lint restantes (code de sortie 2). L'édition est conservée, et Claude peut corriger.
 
 Il est portable sous Linux, macOS et Windows (Git Bash). Les chemins Windows sont convertis avec `cygpath`.
@@ -444,7 +471,7 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 ├── agents/                  # 13 subagents + le COO (agent principal)
 ├── commands/                # 11 commandes /devteam:*
 ├── skills/                  # 9 skills (SKILL.md, et references/ si besoin)
-├── hooks/                   # hooks.json + lint-si-present.sh
+├── hooks/                   # hooks.json, controle-git.sh, lint-si-present.sh
 ├── templates/               # modèles de la mémoire partagée
 ├── README.md
 └── CHANGELOG.md
