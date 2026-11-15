@@ -37,5 +37,6 @@
 **Estimation** : M · **Dépendances** : aucune · **Règles** : RG-01
 **Priorité** : à définir · **Sprint** : à définir · **Statut** : À faire
 
+**Ticket** : aucun
 **Notes dev** : aucune
 **Revue** : aucune · **QA** : aucun

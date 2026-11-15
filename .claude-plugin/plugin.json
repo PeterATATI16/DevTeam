@@ -1,7 +1,7 @@
 {
   "name": "devteam",
-  "version": "0.4.0",
-  "description": "Entreprise de développement logiciel virtuelle : 13 agents spécialisés (BA, PO, architecte, designer, développeurs, tech lead, QA, expert cybersécurité, DevOps, rédacteur, chef de projet) orchestrés par des commandes slash, avec standards de code partagés et mémoire partagée dans docs/.",
+  "version": "0.5.0",
+  "description": "Entreprise de développement logiciel virtuelle : 14 agents spécialisés (BA, PO, architecte, designer, développeurs, tech lead, QA, expert cybersécurité, DevOps, rédacteur, chef de projet, gestionnaire des tickets) et un COO, orchestrés par des commandes slash, avec standards de code partagés et mémoire partagée dans docs/.",
   "author": {
     "name": "Peter ATATI"
   },
@@ -15,6 +15,9 @@
     "qa",
     "devops",
     "francais",
-    "clean-code"
+    "clean-code",
+    "tickets",
+    "github",
+    "gitlab"
   ]
 }

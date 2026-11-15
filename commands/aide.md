@@ -30,6 +30,7 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | DevOps | `devteam:devops` | Docker, `.gitlab-ci.yml`, déploiement |
 | Rédacteur technique | `devteam:redacteur-technique` | README, `docs/api.md`, CHANGELOG |
 | Chef de projet | `devteam:chef-de-projet` | `docs/suivi.md` |
+| Gestionnaire des tickets | `devteam:gestionnaire-tickets` | tickets GitHub ou GitLab, `docs/tickets.md` |
 
 ## Les commandes
 | Commande | Rôle |
@@ -40,6 +41,7 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | `/devteam:review [fichiers\|branche]` | Revue de code seule |
 | `/devteam:tests [id]` | QA seul |
 | `/devteam:securite [id\|branche\|tout]` | Audit de sécurité seul |
+| `/devteam:tickets [plan\|synchroniser] [cible]` | Tickets GitHub ou GitLab |
 | `/devteam:deploy [env]` | DevOps, confirmation avant toute action irréversible |
 | `/devteam:doc [périmètre]` | Documentation |
 | `/devteam:statut` | Point d'avancement |

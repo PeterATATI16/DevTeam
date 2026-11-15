@@ -33,6 +33,14 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
    `devteam:dev-frontend`, `devteam:dev-mobile`. Si plusieurs, backend d'abord.
 6. Passe le statut de la story à `En cours` dans `docs/backlog.md`.
 
+## Synchronisation des tickets
+Si `docs/tickets.md` existe et indique « Synchronisation automatique : autorisée », appelle
+`devteam:gestionnaire-tickets` (mode `plan` puis `appliquer`, cible : la story) **à chaque
+changement de statut** de la story dans le backlog : `En cours`, `En revue`, `Bloqué`, `Terminé`.
+Cette autorisation couvre les déplacements et la fermeture des tickets existants. Toute création
+de ticket reste soumise à l'accord de l'utilisateur. Sans `docs/tickets.md`, ne fais rien et
+propose `/devteam:tickets` en fin de traitement.
+
 ## Boucle de réalisation (itération N = 1, 2, 3)
 
 ### a) Développement

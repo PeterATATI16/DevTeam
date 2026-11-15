@@ -51,11 +51,20 @@ Applique exactement la boucle de `/devteam:story` :
 Après chaque story, affiche une ligne de progression :
 `[3/5] US-007 ✅ (2 itérations)`.
 
+## Synchronisation des tickets
+Si `docs/tickets.md` existe et indique « Synchronisation automatique : autorisée », appelle
+`devteam:gestionnaire-tickets` (mode `plan` puis `appliquer`, cible : la story concernée) **à chaque
+changement de statut** de la story dans le backlog : `En cours`, `En revue`, `Bloqué`, `Terminé`.
+Cette autorisation couvre les déplacements et la fermeture des tickets existants. Toute création
+de ticket reste soumise à l'accord de l'utilisateur. Sans `docs/tickets.md`, ne fais rien et
+propose `/devteam:tickets` en fin de traitement.
+
 ## Fin de sprint
 1. Appelle `devteam:chef-de-projet` pour mettre à jour `docs/suivi.md`.
 2. Résume : stories terminées / bloquées, itérations moyennes, anomalies QA restantes,
    merge requests à créer.
-3. Propose les suites : `/devteam:doc`, `/devteam:deploy`, `/devteam:sprint <n+1>`.
+3. Si `docs/tickets.md` n'existe pas, propose `/devteam:tickets` pour publier le backlog.
+4. Propose les suites : `/devteam:doc`, `/devteam:deploy`, `/devteam:sprint <n+1>`.
 
 ## Maîtrise des coûts
 - Un seul agent actif à la fois ; transmets des chemins de fichiers, pas leur contenu.

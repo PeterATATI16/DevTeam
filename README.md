@@ -5,7 +5,7 @@ Chaque rôle d'une vraie équipe devient un **subagent spécialisé**. Des **com
 orchestrent le cycle de vie d'un projet : cadrage, conception, sprints, revue, tests,
 déploiement, documentation et suivi.
 
-> Version 0.4.0, auteur : Peter ATATI
+> Version 0.5.0, auteur : Peter ATATI
 
 ---
 
@@ -69,6 +69,7 @@ fichiers** dans le dépôt du projet.
 | 11 | `devops` | Docker, docker-compose, `.gitlab-ci.yml`, déploiement | sonnet | code + Bash |
 | 12 | `redacteur-technique` | README, `docs/api.md`, CHANGELOG | haiku | lecture/écriture docs |
 | 13 | `chef-de-projet` | Avancement, risques → `docs/suivi.md` | haiku | lecture + écriture du suivi |
+| 14 | `gestionnaire-tickets` | Stories publiées en tickets GitHub ou GitLab, déplacées sur le tableau selon leur statut, fermées une fois terminées | sonnet | `gh` ou `glab` (votre connexion) + `docs/tickets.md` |
 | | `coo` | **Agent principal** : interlocuteur du CEO, délègue, contrôle, arbitre, rapports et journal des décisions | modèle de la session | Agent + lecture, écriture de `docs/rapports-coo/` et `docs/decisions-ceo.md` |
 
 ### Les commandes
@@ -81,6 +82,7 @@ fichiers** dans le dépôt du projet.
 | `/devteam:review [fichiers\|branche]` | Tech lead seul |
 | `/devteam:tests [id]` | QA seul |
 | `/devteam:securite [id\|branche\|tout]` | Expert cybersécurité seul (proposé automatiquement avant un déploiement staging ou production) |
+| `/devteam:tickets [plan\|synchroniser] [cible]` | Publie et synchronise les tickets GitHub ou GitLab |
 | `/devteam:deploy [env]` | DevOps, avec confirmation action par action avant tout geste irréversible |
 | `/devteam:doc [périmètre]` | Rédacteur technique |
 | `/devteam:statut` | Chef de projet |
@@ -96,9 +98,9 @@ fichiers** dans le dépôt du projet.
 | `clean-code` | KISS, YAGNI, règle de trois pour le générique, nommage, fonctions courtes, erreurs typées, checklist en 10 points | dev-backend, dev-frontend, dev-mobile (avant de coder), architecte, qa-testeur, devops |
 | `clean-architecture` | règle de dépendance, structure `domain/application/infrastructure/presentation/shared`, ports et adaptateurs, proportionnalité, exemple complet | dev-backend, dev-frontend, dev-mobile (avant de créer un fichier), architecte |
 | `code-review` | grille fondée sur les deux précédentes, format fixe Bloquant / À améliorer / Suggestion, sur-ingénierie et duplication | tech-lead-reviewer, expert-cybersecurite |
-| `style-equipe` | interdiction des tirets longs et des tics d'écriture « IA », interfaces sans « look IA », organisation stricte des livrables | les 13 agents |
+| `style-equipe` | interdiction des tirets longs et des tics d'écriture « IA », interfaces sans « look IA », organisation stricte des livrables | tous les agents |
 
-**Procédures métier** : `redaction-user-story` (BA) · `code-review-checklist` (OWASP, tech lead et sécurité) · `plan-de-test` (QA) · `conventions-git` (développeurs) · `adr` (architecte)
+**Procédures métier** : `gestion-tickets` (gestionnaire des tickets) · `redaction-user-story` (BA) · `code-review-checklist` (OWASP, tech lead et sécurité) · `plan-de-test` (QA) · `conventions-git` (développeurs) · `adr` (architecte)
 
 Chaque agent a une section « Skills obligatoires » dans son prompt. Elle lui indique quelle skill lire,
 et à quel moment, via son chemin `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`.
@@ -130,6 +132,8 @@ mon-projet/
     ├── reviews/           # rapports de revue              ← tech-lead-reviewer
     ├── qa/                # rapports de test               ← qa-testeur
     ├── securite/          # audits de sécurité             ← expert-cybersecurite
+    ├── tickets.md         # tickets : config, correspondance ← gestionnaire-tickets
+    ├── tickets/           # corps des tickets              ← gestionnaire-tickets
     ├── rapports-coo/      # un rapport par compte rendu    ← COO
     ├── decisions-ceo.md   # journal des décisions du CEO   ← COO
     └── suivi.md           # avancement et risques          ← chef-de-projet
@@ -155,7 +159,7 @@ Vous jouez le **CEO**. Vous ne parlez qu'au **COO** (directeur des opérations),
 naturel, sans connaître aucune commande. Le COO est la **session principale** de Claude Code,
 et non un subagent, puisqu'un subagent ne peut pas en lancer d'autres. Il reformule
 votre demande, pose au plus 3 questions de cadrage et propose un plan. Ensuite, il délègue
-aux 13 agents dans le bon ordre et contrôle leurs livrables. Il ne vous interrompt que pour
+aux 14 agents dans le bon ordre et contrôle leurs livrables. Il ne vous interrompt que pour
 une décision.
 
 ### Activer le COO
@@ -276,6 +280,79 @@ claude plugin validate .
 ```
 
 Après l'installation, tapez `/devteam:aide`.
+
+### Mettre à jour le plugin
+
+Quand une nouvelle version est publiée sur le dépôt, mettez-la à jour en deux temps.
+
+**Dans une session Claude Code**
+1. Tapez `/plugin`, ouvrez l'onglet **Marketplaces**, sélectionnez `devteam-marketplace` puis
+   **Update marketplace**. Cela rafraîchit le catalogue et met à jour les plugins installés depuis lui.
+   Autre possibilité : onglet **Installed**, plugin `devteam`, **Update now**.
+2. Tapez `/reload-plugins` pour charger la nouvelle version sans redémarrer.
+
+**Depuis le terminal**
+```bash
+claude plugin marketplace update devteam-marketplace
+```
+```bash
+claude plugin update devteam@devteam-marketplace
+```
+La nouvelle version s'applique à la session suivante, ou après `/reload-plugins` dans une
+session ouverte. Rafraîchir la marketplace seule ne suffit pas : il faut aussi mettre à jour
+le plugin.
+
+**Mise à jour automatique** : elle est désactivée par défaut pour les marketplaces tierces.
+Pour l'activer, ouvrez `/plugin`, puis l'onglet **Marketplaces**, sélectionnez
+`devteam-marketplace` et choisissez **Enable auto-update**. Claude Code vérifie alors les mises
+à jour en arrière-plan et affiche `Plugin updated: devteam · Run /reload-plugins to apply`.
+
+Si la commande répond `devteam is already at the latest version`, la version n'a pas changé
+dans `.claude-plugin/plugin.json`. Chaque publication doit incrémenter ce numéro (voir le
+CHANGELOG).
+
+---
+
+## Tickets GitHub et GitLab
+
+L'agent `gestionnaire-tickets` publie les user stories du backlog en tickets sur la plateforme
+du dépôt (détectée par `git remote`), puis les tient à jour pendant tout le projet.
+
+**Prérequis, une seule fois** : installer l'outil officiel et s'y connecter vous-même.
+L'agent ne manipule jamais de jeton.
+```bash
+brew install gh
+```
+```bash
+gh auth login
+```
+Pour GitLab : `brew install glab`, puis `glab auth login` (avec `--hostname` pour une instance interne).
+Pour un tableau GitHub Projects : `gh auth refresh -s project`.
+
+**Ce qu'il fait**
+
+| Statut dans le backlog | Ticket |
+|---|---|
+| À faire, En cours, En revue | ouvert, label `statut::…`, carte dans la colonne correspondante |
+| Bloqué | ouvert, label `statut::bloque`, commentaire avec la cause |
+| Terminé | **fermé**, commentaire avec les liens vers les rapports de revue et de QA |
+| Won't | fermé comme « non planifié », avec la justification |
+
+Chaque ticket reprend la story, ses critères en cases à cocher, sa priorité, son périmètre et
+son estimation (labels), ainsi que son sprint (milestone). Sur GitLab, les labels `statut::…`
+alimentent un tableau dont les cartes se déplacent seules. Sur GitHub, l'agent met aussi à jour
+le champ « Status » d'un projet si vous en indiquez un.
+
+**Sécurité**
+- Il travaille toujours en deux temps : d'abord un plan lisible, ensuite seulement l'application.
+- La première publication et toute création de ticket demandent votre accord.
+- À la première activation, vous pouvez autoriser la **synchronisation automatique**. Les
+  commandes `story` et `sprint`, ou le COO, déplacent et ferment alors les tickets existants à
+  chaque changement de statut, sans vous redemander.
+- Il ne supprime jamais un ticket. Un ticket absent du backlog est seulement signalé.
+
+**Utilisation** : dites au COO « publie le backlog sur GitLab », ou lancez
+`/devteam:tickets` (`/devteam:tickets plan` pour voir le plan sans rien modifier).
 
 ---
 
@@ -468,9 +545,9 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 ├── .claude-plugin/
 │   ├── plugin.json          # manifeste du plugin
 │   └── marketplace.json     # marketplace pointant vers ce dépôt
-├── agents/                  # 13 subagents + le COO (agent principal)
-├── commands/                # 11 commandes /devteam:*
-├── skills/                  # 9 skills (SKILL.md, et references/ si besoin)
+├── agents/                  # 14 subagents + le COO (agent principal)
+├── commands/                # 12 commandes /devteam:*
+├── skills/                  # 10 skills (SKILL.md, et references/ si besoin)
 ├── hooks/                   # hooks.json, controle-git.sh, lint-si-present.sh
 ├── templates/               # modèles de la mémoire partagée
 ├── README.md
@@ -481,7 +558,7 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 
 | Phase | Contenu | Statut |
 |---|---|---|
-| 1 | Équipe de 13 agents, commandes, standards de code, mode CEO avec le COO, fonctionnement 100 % terminal | Livrée (0.3.0) |
+| 1 | Équipe de 14 agents, commandes, standards de code, mode CEO avec le COO, tickets GitHub et GitLab, fonctionnement 100 % terminal | Livrée (0.5.0) |
 | 2 | Connexion du COO à Microsoft Teams (notifications et échanges bidirectionnels via Claude Code en mode headless, sans clé API) | Prévue |
 
 La phase 2 est préparée sans être implémentée. Le plugin ne contient aucun bridge, webhook,

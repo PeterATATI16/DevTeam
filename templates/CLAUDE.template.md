@@ -53,3 +53,4 @@ docs/      mémoire partagée de l'équipe devteam
 | docs/securite/ | Audits de sécurité | expert-cybersecurite |
 | docs/rapports-coo/ | Comptes rendus au CEO | coo |
 | docs/decisions-ceo.md | Journal des décisions du CEO | coo |
+| docs/tickets.md, docs/tickets/ | Tickets GitHub ou GitLab, correspondance et journal | gestionnaire-tickets |

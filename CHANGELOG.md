@@ -5,6 +5,22 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions : [S
 
 ## [Non publié]
 
+## [0.5.0] - 2026-11-15
+### Ajouté
+- Agent `gestionnaire-tickets` et commande `/devteam:tickets` : publication des user stories en
+  tickets GitHub (`gh`) ou GitLab (`glab`) selon le dépôt, labels de priorité, périmètre,
+  estimation et statut, milestones par sprint, déplacement sur le tableau, fermeture des
+  stories terminées. Fonctionnement en deux temps (plan, puis application après accord).
+- Skill `gestion-tickets` avec les commandes de référence pour GitHub et GitLab.
+- Modèles `templates/tickets.md` (configuration, correspondance, journal) et `templates/ticket.md`.
+- Synchronisation des tickets à chaque changement de statut dans `story` et `sprint`, si elle
+  est autorisée dans `docs/tickets.md`.
+- README : sections « Mettre à jour le plugin » et « Tickets GitHub et GitLab ».
+
+### Modifié
+- La version n'est plus déclarée que dans `plugin.json`, comme le recommande la documentation
+  des marketplaces.
+
 ## [0.4.0] - 2026-11-14
 ### Modifié
 - Skill `conventions-git` réécrite : branches nommées par l'identifiant traité

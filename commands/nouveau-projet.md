@@ -77,7 +77,9 @@ entrées `docs/specs.md`, `docs/backlog.md`, `docs/architecture.md` ; sortie
 1. Propose de committer les documents sur une branche `cadrage-initial`
    (message : `Cadrage initial du projet`, skill `conventions-git`). Ne committe qu'avec l'accord
    de l'utilisateur, ne pousse jamais.
-2. Résume les fichiers produits et indique la suite : `/devteam:sprint 1`.
+2. Propose de publier le backlog en tickets GitHub ou GitLab avec `/devteam:tickets`
+   (création soumise à accord).
+3. Résume les fichiers produits et indique la suite : `/devteam:sprint 1`.
 
 ## Règles d'orchestration
 - Un seul agent à la fois ; attends son résultat avant le suivant.
