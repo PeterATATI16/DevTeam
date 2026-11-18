@@ -5,6 +5,42 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions : [S
 
 ## [Non publié]
 
+## [0.6.0] - 2026-11-18
+### Ajouté
+- **Mode équipe** : plusieurs personnes sur le même dépôt, chacune avec sa session et son COO.
+  Activé par `docs/equipe.md` (membres, décideur, limite de stories en cours, branche principale).
+- Skill `travail-en-equipe` : propriétaires des fichiers, statut durable et statut vivant,
+  réservation, resynchronisation, livraison, décisions à plusieurs, vue d'équipe.
+- Commandes `/devteam:equipe` (initialiser, ajouter, migrer), `/devteam:prendre` (réservation
+  exclusive par commit poussé sans forcer et ticket assigné), `/devteam:livrer` (tests complets,
+  merge request avec relecteur humain), `/devteam:synchro` (qui fait quoi, conflits probables).
+- Modèles `equipe.md`, `story.md`, `gitattributes`, `CODEOWNERS`.
+- Hook git : en mode équipe, commit et push refusés sur la branche principale.
+
+### Modifié
+- **`docs/` rangé par département** : `direction/`, `gestion-projet/`, `produit/`,
+  `architecture/`, `design/`, `qualite/`, `securite/`, `exploitation/`, `documentation/`, avec
+  un plan de classement `docs/README.md` (modèle `templates/docs-README.md`). Plus aucun fichier
+  à la racine de `docs/`. Les rapports de revue passent de `reviews/` à `qualite/revues/`.
+- Commande `/devteam:organiser` : range un projet existant (déplacements par `git mv`, une
+  story par fichier, journaux en ajout seul, liens mis à jour, contrôle de complétude).
+- Une story par fichier (`docs/stories/US-xxx.md`) ; `docs/backlog.md` devient l'index du PO.
+  Les anciens projets restent lisibles ; `/devteam:equipe migrer` les convertit.
+- Journal des décisions et suivi des tickets en ajout seul, fusionnés sans conflit
+  (`merge=union`), identifiants de décision uniques `D-AAAAMMJJ-HHMM-<initiales>`.
+- Rapports du COO rangés par auteur (`docs/rapports-coo/<auteur>/`).
+- `story` et `sprint` gèrent la réservation et la livraison en mode équipe ; le COO identifie
+  son interlocuteur et fait proposer les décisions au décideur.
+- La synchronisation des tickets ne fait jamais reculer un statut vivant ni ne change la
+  personne assignée.
+
+### Corrigé
+- Hook git : il n'examine plus que le message du commit (`-m`, heredoc, fichier `-F`) et non toute
+  la ligne de commande ; un `claude -p` ou un chemin cité ailleurs ne déclenche plus de refus.
+- Hook git : un script écrit par heredoc qui cite une création de branche préfixée n'est plus pris
+  pour une vraie création de branche ; une commande composée qui change de branche avant de
+  committer est jugée sur la branche cible.
+
 ## [0.5.0] - 2026-11-15
 ### Ajouté
 - Agent `gestionnaire-tickets` et commande `/devteam:tickets` : publication des user stories en

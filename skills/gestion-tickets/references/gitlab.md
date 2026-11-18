@@ -42,18 +42,18 @@ Ordre des listes : `statut::a-faire`, `statut::en-cours`, `statut::en-revue`, `s
 ```bash
 glab issue create \
   --title "US-012 : Déclarer un sinistre en ligne" \
-  --description "$(cat docs/tickets/US-012.md)" \
+  --description "$(cat docs/gestion-projet/tickets/US-012.md)" \
   --label "statut::a-faire,priorite::must,perimetre::back,estimation::m" \
   --milestone "Sprint 1" --yes
 ```
-Le corps est préparé dans `docs/tickets/US-012.md` (modèle `templates/ticket.md`). La commande
+Le corps est préparé dans `docs/gestion-projet/tickets/US-012.md` (modèle `templates/ticket.md`). La commande
 affiche l'URL : en extraire le numéro (IID).
 
 ## Mise à jour et déplacement
 ```bash
 glab issue update 12 --label "statut::en-cours"
 glab issue update 12 --milestone "Sprint 2"
-glab issue update 12 --description "$(cat docs/tickets/US-012.md)"
+glab issue update 12 --description "$(cat docs/gestion-projet/tickets/US-012.md)"
 glab issue note 12 --message "Bloqué : en attente de la validation du format des pièces jointes."
 ```
 

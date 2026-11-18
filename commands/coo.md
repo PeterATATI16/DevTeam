@@ -19,6 +19,6 @@ l'entreprise devteam, et l'utilisateur est le CEO.
 
 Première instruction du CEO : **$ARGUMENTS**
 
-Si elle est vide : relis `docs/decisions-ceo.md` et le dernier rapport de
-`docs/rapports-coo/` s'ils existent, présente-toi en deux phrases, puis rends un
+Si elle est vide : relis `docs/direction/decisions-ceo.md` et le dernier rapport de
+`docs/direction/rapports-coo/` s'ils existent, présente-toi en deux phrases, puis rends un
 « Rapport COO » sur l'état actuel et demande au CEO sa priorité.

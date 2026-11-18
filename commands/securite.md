@@ -14,12 +14,12 @@ Modèle du rapport : `${CLAUDE_PLUGIN_ROOT}/templates/securite.md`.
 ## Étapes
 1. Détermine la cible :
    - identifiant de story (`US-xxx`) : enregistre le diff de sa branche dans
-     `docs/reviews/<story>.diff` (`git diff <principale>...<branche>`) ;
+     `docs/qualite/revues/<story>.diff` (`git diff <principale>...<branche>`) ;
    - nom de branche existante : même chose, rapport nommé d'après la branche ;
    - `tout` : audit du dépôt complet, rapport `docs/securite/projet-<AAAAMMJJ>.md`.
 2. Crée `docs/securite/` si besoin.
 3. Appelle `devteam:expert-cybersecurite` avec : la cible, le diff éventuel, les chemins
-   `CLAUDE.md`, `docs/architecture.md`, `docs/specs.md`, le modèle ci-dessus, et le
+   `CLAUDE.md`, `docs/architecture/architecture.md`, `docs/produit/specs.md`, le modèle ci-dessus, et le
    rapport précédent de la même cible s'il existe.
 4. Affiche le verdict, le nombre de constats par sévérité et les constats Critiques et
    Élevés résumés.

@@ -68,14 +68,14 @@ fichier généré, de secret ou de `.env`.
 **Description** :
 ```markdown
 ## Contexte
-US-012 : Déclarer un sinistre en ligne (lien vers docs/backlog.md)
+US-012 : Déclarer un sinistre en ligne (lien vers docs/produit/stories/US-012.md)
 
 ## Changements
 - …
 
 ## Vérifications
-- Revue : docs/reviews/US-012.md : APPROUVÉ (itération 2)
-- QA : docs/qa/US-012.md : VALIDÉ
+- Revue : docs/qualite/revues/US-012.md : APPROUVÉ (itération 2)
+- QA : docs/qualite/qa/US-012.md : VALIDÉ
 - [ ] Pipeline vert
 - [ ] Migrations testées
 - [ ] Documentation mise à jour

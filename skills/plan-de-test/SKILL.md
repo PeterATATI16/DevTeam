@@ -22,7 +22,7 @@ Pour chaque critère Given/When/Then :
 3. **Erreurs** : données invalides, ressource absente, droits insuffisants.
 4. **Sécurité** : accès à la ressource d'un autre utilisateur, injection, non authentifié.
 
-## Matrice de traçabilité (à inclure dans docs/qa/<story>.md)
+## Matrice de traçabilité (à inclure dans docs/qualite/qa/<story>.md)
 | Critère | Cas | Type | Niveau | Fichier de test | Résultat |
 |---|---|---|---|---|---|
 | CA-1 | TC-01 Déclaration complète acceptée | Nominal | Intégration | `tests/api/sinistres.test.ts` | ✅ |

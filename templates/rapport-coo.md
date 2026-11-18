@@ -26,5 +26,5 @@ Règles du format (fixe, prévu pour être converti en carte Teams plus tard) :
 - Une rubrique vide contient « Aucun point. ».
 - Le bloc « DÉCISION REQUISE » n'apparaît que si une validation est attendue ; ses numéros
   sont ceux de la rubrique « Décisions attendues du CEO ».
-- Le rapport est enregistré dans docs/rapports-coo/AAAA-MM-JJ-HHMM.md.
+- Le rapport est enregistré dans docs/direction/rapports-coo/<auteur>/AAAA-MM-JJ-HHMM.md.
 -->

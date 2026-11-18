@@ -6,6 +6,9 @@ description: "Rédiger des user stories de qualité (format « En tant que… je
 # Rédaction de user stories
 
 ## Format
+Une story par fichier : `docs/produit/stories/US-xxx.md` (modèle `templates/story.md`), référencée
+dans l'index `docs/produit/backlog.md`. Priorité et sprint ne figurent que dans l'index.
+
 ```markdown
 ### US-012 : Déclarer un sinistre en ligne  `[back][front]`
 **En tant que** assuré connecté,
@@ -24,7 +27,7 @@ description: "Rédiger des user stories de qualité (format « En tant que… je
    **Then** elle est refusée avant envoi avec l'indication de la taille maximale.
 
 **Estimation** : M · **Dépendances** : US-003 · **Règles** : RG-04, RG-05
-**Statut** : À faire · **Priorité** : à définir · **Sprint** : à définir
+**Statut** : À faire (priorité et sprint : dans l'index, par le PO)
 ```
 
 Tags de périmètre : `[back]`, `[front]`, `[mobile]`, `[devops]`. Ils servent à choisir

@@ -1,5 +1,5 @@
 ---
-description: "Lance uniquement le tech lead relecteur sur des fichiers, une branche ou les changements en cours, et produit un rapport dans docs/reviews/."
+description: "Lance uniquement le tech lead relecteur sur des fichiers, une branche ou les changements en cours, et produit un rapport dans docs/qualite/revues/."
 argument-hint: "[fichiers… | branche]"
 ---
 
@@ -26,9 +26,9 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
    - sinon → liste de fichiers ou de dossiers.
 2. Choisis un nom de rapport : l'identifiant de story si la branche en contient un
    (`US-012-…` → `US-012`), sinon `review-<AAAAMMJJ-HHMM>`.
-3. Crée `docs/reviews/` si besoin et enregistre le diff dans `docs/reviews/<nom>.diff`.
+3. Crée `docs/qualite/revues/` si besoin et enregistre le diff dans `docs/qualite/revues/<nom>.diff`.
 4. Appelle `devteam:tech-lead-reviewer` avec : le nom du rapport, le diff et/ou la liste
-   des fichiers, `CLAUDE.md` et `docs/architecture.md` s'ils existent, le modèle
+   des fichiers, `CLAUDE.md` et `docs/architecture/architecture.md` s'ils existent, le modèle
    `templates/review.md`.
 5. Affiche le verdict, le nombre de remarques par sévérité, les remarques Bloquantes
    résumées et le chemin du rapport.

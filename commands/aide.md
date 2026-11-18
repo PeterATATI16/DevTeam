@@ -17,20 +17,20 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 ## L'équipe
 | Rôle | Agent | Livrables |
 |---|---|---|
-| Business Analyst | `devteam:business-analyst` | `docs/specs.md`, `docs/backlog.md` |
+| Business Analyst | `devteam:business-analyst` | `docs/produit/specs.md`, `docs/produit/stories/`, index `docs/produit/backlog.md` |
 | Product Owner | `devteam:product-owner` | priorités MoSCoW, MVP, sprints |
-| Architecte | `devteam:architecte` | `docs/architecture.md`, `docs/adr/`, `CLAUDE.md` |
-| Designer UX/UI | `devteam:ux-ui-designer` | `docs/maquettes/` |
+| Architecte | `devteam:architecte` | `docs/architecture/architecture.md`, `docs/architecture/adr/`, `CLAUDE.md` |
+| Designer UX/UI | `devteam:ux-ui-designer` | `docs/design/maquettes/` |
 | Dev backend | `devteam:dev-backend` | API, BD, logique métier + tests |
 | Dev frontend | `devteam:dev-frontend` | interfaces web + tests |
 | Dev mobile | `devteam:dev-mobile` | écrans Flutter (par défaut) + tests |
-| Tech lead | `devteam:tech-lead-reviewer` | `docs/reviews/<story>.md` (lecture seule) |
-| QA | `devteam:qa-testeur` | tests, `docs/qa/<story>.md` |
+| Tech lead | `devteam:tech-lead-reviewer` | `docs/qualite/revues/<story>.md` (lecture seule) |
+| QA | `devteam:qa-testeur` | tests, `docs/qualite/qa/<story>.md` |
 | Expert cybersécurité | `devteam:expert-cybersecurite` | audit `docs/securite/<cible>.md` (lecture seule) |
 | DevOps | `devteam:devops` | Docker, `.gitlab-ci.yml`, déploiement |
-| Rédacteur technique | `devteam:redacteur-technique` | README, `docs/api.md`, CHANGELOG |
-| Chef de projet | `devteam:chef-de-projet` | `docs/suivi.md` |
-| Gestionnaire des tickets | `devteam:gestionnaire-tickets` | tickets GitHub ou GitLab, `docs/tickets.md` |
+| Rédacteur technique | `devteam:redacteur-technique` | README, `docs/documentation/api.md`, CHANGELOG |
+| Chef de projet | `devteam:chef-de-projet` | `docs/gestion-projet/suivi.md` |
+| Gestionnaire des tickets | `devteam:gestionnaire-tickets` | tickets GitHub ou GitLab, `docs/gestion-projet/tickets.md` |
 
 ## Les commandes
 | Commande | Rôle |
@@ -46,6 +46,11 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | `/devteam:doc [périmètre]` | Documentation |
 | `/devteam:statut` | Point d'avancement |
 | `/devteam:coo [instruction]` | Mode CEO : la session devient le COO |
+| `/devteam:equipe [initialiser\|ajouter\|migrer]` | Mode équipe : plusieurs personnes sur le dépôt |
+| `/devteam:prendre [US-xxx]` | Réserver une story (mode équipe) |
+| `/devteam:livrer [US-xxx]` | Livrer sa story par merge request (mode équipe) |
+| `/devteam:synchro` | Vue d'équipe et resynchronisation |
+| `/devteam:organiser [plan]` | Ranger un ancien projet par département |
 | `/devteam:aide [commande]` | Cette aide |
 
 ## Déroulé type
@@ -62,6 +67,17 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | `clean-architecture` | couches, emplacement des fichiers, `shared/`, proportionnalité | développeurs, architecte |
 | `code-review` | grille et format Bloquant / À améliorer / Suggestion | tech lead, expert cybersécurité |
 | `style-equipe` | aucun tiret long, aucune interface au « look IA », organisation stricte | tous les agents |
+
+## Travailler à plusieurs
+Avec `docs/direction/equipe.md` (créé par `/devteam:equipe`), chaque membre réserve ses stories
+(`/devteam:prendre`), travaille sur sa branche et livre par merge request relue par un humain
+(`/devteam:livrer`). `/devteam:synchro` montre qui fait quoi. Le hook interdit tout commit
+direct sur la branche principale.
+
+## Où sont les fichiers
+`docs/` est rangé par département : `direction/`, `gestion-projet/`, `produit/`,
+`architecture/`, `design/`, `qualite/`, `securite/`, `exploitation/`, `documentation/`.
+Le plan complet est dans `docs/README.md` du projet.
 
 ## Principes
 - Les agents ne se parlent pas directement : ils échangent par les fichiers de `docs/`

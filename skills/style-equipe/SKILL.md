@@ -43,7 +43,7 @@ immédiatement.
 - Phrases courtes : une idée par phrase.
 - Le fait d'abord, l'explication ensuite.
 - Chiffres et noms précis plutôt qu'adjectifs (« 200 ms » et non « rapide »).
-- Vocabulaire du glossaire de `docs/specs.md`, identique partout.
+- Vocabulaire du glossaire de `docs/produit/specs.md`, identique partout.
 
 ## 3. Organisation obligatoire
 
@@ -60,6 +60,26 @@ immédiatement.
 - Chaque fichier est à sa place (skill `clean-architecture`, section « Où placer un fichier ? »).
 - Pas de fichier fourre-tout (`misc`, `divers`, `utils2`, `new`, `final-v2`).
 - Pas de fichier temporaire ou de brouillon laissé dans le dépôt.
+
+### Classement de `docs/` par département
+`docs/` est rangé par département, comme une entreprise. **Rien à la racine de `docs/`**, à
+part le plan de classement `docs/README.md` (modèle `templates/docs-README.md`).
+
+| Département | Contenu |
+|---|---|
+| `docs/direction/` | `decisions-ceo.md`, `equipe.md`, `rapports-coo/<auteur>/` |
+| `docs/gestion-projet/` | `suivi.md`, `etat-equipe.md`, `tickets.md`, `tickets/` |
+| `docs/produit/` | `specs.md`, `backlog.md`, `stories/` |
+| `docs/architecture/` | `architecture.md`, `adr/` |
+| `docs/design/` | `maquettes/` |
+| `docs/qualite/` | `revues/`, `qa/` |
+| `docs/securite/` | audits de sécurité |
+| `docs/exploitation/` | `deploiement.md` |
+| `docs/documentation/` | `api.md` |
+
+Un nouveau document va dans le département de son auteur. S'il n'entre dans aucun, on ne
+crée pas de fichier à la racine : on le signale à l'orchestrateur. Ancienne organisation
+détectée (fichiers à la racine de `docs/`) : proposer `/devteam:organiser`.
 
 ### Réponse à l'orchestrateur
 - Toujours le format de sortie défini dans le prompt de l'agent, rien de plus.

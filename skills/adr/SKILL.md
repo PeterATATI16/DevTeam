@@ -1,6 +1,6 @@
 ---
 name: adr
-description: "Format et cycle de vie des Architecture Decision Records (ADR) dans docs/adr/. À utiliser pour documenter, remplacer ou relire une décision d'architecture."
+description: "Format et cycle de vie des Architecture Decision Records (ADR) dans docs/architecture/adr/. À utiliser pour documenter, remplacer ou relire une décision d'architecture."
 ---
 
 # Architecture Decision Records (ADR)
@@ -11,7 +11,7 @@ données, style d'architecture, authentification, hébergement, format d'API, st
 tests, choix d'une bibliothèque centrale.
 
 ## Nommage
-`docs/adr/NNNN-titre-court-en-kebab-case.md`, numérotation continue sur 4 chiffres
+`docs/architecture/adr/NNNN-titre-court-en-kebab-case.md`, numérotation continue sur 4 chiffres
 (`0001-choix-postgresql.md`). Un ADR = une décision.
 
 ## Format (inspiré de Michael Nygard / MADR)
@@ -45,7 +45,7 @@ Nous retenons PostgreSQL 16 parce que …
 - Un ADR **accepté n'est jamais réécrit** : pour changer d'avis, créer un nouvel ADR et
   passer l'ancien à « Remplacé par ADR-00xx ».
 - Un ADR passe de « Proposé » à « Accepté » après le point de validation de l'architecture.
-- `docs/architecture.md` liste tous les ADR avec leur statut.
+- `docs/architecture/architecture.md` liste tous les ADR avec leur statut.
 
 ## Contrôle qualité
 - [ ] Au moins deux options réellement envisagées.

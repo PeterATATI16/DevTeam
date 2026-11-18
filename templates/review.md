@@ -1,7 +1,7 @@
 # Revue de code : <US-xxx>, itération <N>
 
 > Relecteur : tech-lead-reviewer · Date : AAAA-MM-JJ
-> Périmètre : branche `<branche>` · diff `docs/reviews/<US-xxx>.diff` · <n> fichiers
+> Périmètre : branche `<branche>` · diff `docs/qualite/revues/<US-xxx>.diff` · <n> fichiers
 
 ## Verdict : APPROUVÉ | À CORRIGER
 

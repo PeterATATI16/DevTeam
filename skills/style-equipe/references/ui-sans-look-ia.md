@@ -1,7 +1,7 @@
 # Interfaces sans « look IA »
 
 Objectif : des écrans qui semblent conçus par une équipe produit qui connaît le métier,
-pas produits par un générateur. S'applique aux maquettes (`docs/maquettes/`), au
+pas produits par un générateur. S'applique aux maquettes (`docs/design/maquettes/`), au
 frontend web et au mobile.
 
 ## 1. Tics visuels interdits
@@ -33,7 +33,7 @@ frontend web et au mobile.
   dense et filtrable, pas des cartes aérées.
 
 ### Système visuel sobre
-- Un seul design system (`docs/maquettes/design-system.css` ou celui du projet), utilisé partout.
+- Un seul design system (`docs/design/maquettes/design-system.css` ou celui du projet), utilisé partout.
 - Palette : neutres (gris) pour la structure, **une** couleur principale de marque,
   couleurs sémantiques réservées aux états (succès, alerte, erreur, information).
 - Typographie : une famille (police système ou celle de la marque), 4 à 5 tailles au plus,

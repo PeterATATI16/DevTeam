@@ -1,42 +1,19 @@
 # Backlog : <Nom du projet>
 
-> Rédigé par : business-analyst (stories) et product-owner (priorités, sprints)
-> Statuts possibles : À faire · En cours · En revue · Bloqué · Terminé
+> Index tenu par le product-owner. Le contenu de chaque story est dans `docs/produit/stories/US-xxx.md`
+> (rédigé par le business-analyst). Le statut de chaque story est dans son fichier et sur son
+> ticket, pas ici : ce fichier ne change donc qu'aux arbitrages du PO.
 
 ## MVP
 **Périmètre** : US-…, US-…
 **Critères de succès** : …
 
 ## Plan des sprints
-| Sprint | Objectif (Sprint Goal) | Stories |
+| Sprint | Objectif (Sprint Goal) | Stories, dans l'ordre de réalisation |
 |---|---|---|
 | 1 | | US-001, US-002 |
 
-## Vue d'ensemble
-| ID | Titre | Périmètre | Priorité | Estim. | Sprint | Statut | Itérations |
-|---|---|---|---|---|---|---|---|
-| US-001 | | [back] | Must | M | 1 | À faire | 0 |
-
----
-
 ## Stories
-
-### US-001 : <Titre>  `[back]`
-**En tant que** …,
-**je veux** …,
-**afin de** ….
-
-**Critères d'acceptation**
-1. **Given** …
-   **When** …
-   **Then** …
-2. **Given** …
-   **When** …
-   **Then** …
-
-**Estimation** : M · **Dépendances** : aucune · **Règles** : RG-01
-**Priorité** : à définir · **Sprint** : à définir · **Statut** : À faire
-
-**Ticket** : aucun
-**Notes dev** : aucune
-**Revue** : aucune · **QA** : aucun
+| ID | Titre | Fichier | Périmètre | Priorité | Estim. | Sprint | Dépendances |
+|---|---|---|---|---|---|---|---|
+| US-001 | | [US-001](stories/US-001.md) | [back] | Must | M | 1 | aucune |
