@@ -10,7 +10,7 @@
 - **Statut** : Proposée | Décidée | Refusée
 - **Date** : AAAA-MM-JJ HH:MM
 - **Auteur** : <COO de qui>
-- **Contexte** : <mission, rapport d'origine : `docs/rapports-coo/<auteur>/AAAA-MM-JJ-HHMM.md`>
+- **Contexte** : <mission, rapport d'origine : `docs/direction/rapports-coo/<auteur>/AAAA-MM-JJ-HHMM.md`>
 - **Question posée** : <question>
 - **Recommandation du COO** : <option>
 - **Décision du CEO** : <réponse du décideur, au plus près de ses mots> | en attente

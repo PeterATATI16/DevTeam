@@ -20,7 +20,7 @@
 | Règles de gestion | RG-xx \| aucune |
 | Exigences couvertes | EF-xx |
 
-> Priorité et sprint : voir `docs/backlog.md` (propriété du Product Owner).
+> Priorité et sprint : voir `docs/produit/backlog.md` (propriété du Product Owner).
 
 ## Suivi
 | Champ | Valeur |

@@ -6,8 +6,8 @@ description: "Rédiger des user stories de qualité (format « En tant que… je
 # Rédaction de user stories
 
 ## Format
-Une story par fichier : `docs/stories/US-xxx.md` (modèle `templates/story.md`), référencée
-dans l'index `docs/backlog.md`. Priorité et sprint ne figurent que dans l'index.
+Une story par fichier : `docs/produit/stories/US-xxx.md` (modèle `templates/story.md`), référencée
+dans l'index `docs/produit/backlog.md`. Priorité et sprint ne figurent que dans l'index.
 
 ```markdown
 ### US-012 : Déclarer un sinistre en ligne  `[back][front]`

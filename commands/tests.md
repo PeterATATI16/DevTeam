@@ -1,5 +1,5 @@
 ---
-description: "Lance uniquement le QA : écrit et exécute les tests, vérifie les critères d'acceptation d'une story (ou de tout le projet) et produit un rapport dans docs/qa/."
+description: "Lance uniquement le QA : écrit et exécute les tests, vérifie les critères d'acceptation d'une story (ou de tout le projet) et produit un rapport dans docs/qualite/qa/."
 argument-hint: "[id de story]"
 ---
 
@@ -20,11 +20,11 @@ transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs s
 obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
 ## Étapes
-1. Vérifie l'existence de `CLAUDE.md` (commandes de test) et de `docs/backlog.md`. S'ils
+1. Vérifie l'existence de `CLAUDE.md` (commandes de test) et de `docs/produit/backlog.md`. S'ils
    manquent, le QA travaillera sur la seule suite de tests existante : préviens-en.
 2. Appelle `devteam:qa-testeur` avec : la ou les stories ciblées, les chemins
-   `docs/specs.md`, `docs/stories/US-xxx.md` (ou `docs/backlog.md`), le rapport de revue s'il existe, le modèle
-   `templates/qa.md`. Nom du rapport : `docs/qa/<story>.md` ou
-   `docs/qa/campagne-<AAAAMMJJ>.md` pour une campagne globale.
+   `docs/produit/specs.md`, `docs/produit/stories/US-xxx.md` (ou `docs/produit/backlog.md`), le rapport de revue s'il existe, le modèle
+   `templates/qa.md`. Nom du rapport : `docs/qualite/qa/<story>.md` ou
+   `docs/qualite/qa/campagne-<AAAAMMJJ>.md` pour une campagne globale.
 3. Affiche le verdict, les critères couverts, les tests passés/total, les anomalies.
 4. Si EN ÉCHEC, propose `/devteam:story <id>` pour faire corriger ; ne corrige rien toi-même.

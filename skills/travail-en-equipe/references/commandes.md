@@ -1,6 +1,6 @@
 # Commandes du travail en équipe
 
-`<principale>` est la branche principale déclarée dans `docs/equipe.md` (souvent `main`).
+`<principale>` est la branche principale déclarée dans `docs/direction/equipe.md` (souvent `main`).
 Vérifier la syntaxe avec `gh <commande> --help` ou `glab <commande> --help` en cas d'erreur.
 
 ## Identité
@@ -21,7 +21,7 @@ glab issue view 12 --output json                    # GitLab
 ## Réservation
 ```bash
 git switch -c US-012-declaration-sinistre origin/main
-# Responsable renseigné dans docs/stories/US-012.md, puis :
+# Responsable renseigné dans docs/produit/stories/US-012.md, puis :
 git commit -am "Réservation de US-012 par Awa Diallo"
 git push -u origin US-012-declaration-sinistre        # sans --force : refusé si déjà pris
 gh issue edit 12 --add-assignee @me --remove-label "statut::a-faire" --add-label "statut::en-cours"
@@ -48,17 +48,17 @@ git push --force-with-lease origin US-012-declaration-sinistre
 # GitHub
 gh pr create --base main --head US-012-declaration-sinistre \
   --title "Déclaration de sinistre en ligne (US-012)" \
-  --body-file docs/reviews/US-012-mr.md --reviewer <login-relecteur>
+  --body-file docs/qualite/revues/US-012-mr.md --reviewer <login-relecteur>
 gh issue edit 12 --remove-label "statut::en-cours" --add-label "statut::en-revue"
 
 # GitLab
 glab mr create --source-branch US-012-declaration-sinistre --target-branch main \
   --title "Déclaration de sinistre en ligne (US-012)" \
-  --description "$(cat docs/reviews/US-012-mr.md)" \
+  --description "$(cat docs/qualite/revues/US-012-mr.md)" \
   --reviewer <login-relecteur> --remove-source-branch --yes
 glab issue update 12 --label "statut::en-revue"
 ```
-La description de la merge request (fichier `docs/reviews/US-012-mr.md`, non versionné)
+La description de la merge request (fichier `docs/qualite/revues/US-012-mr.md`, non versionné)
 contient `Closes #12` pour fermer le ticket à la fusion.
 
 ## Vue d'équipe

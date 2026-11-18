@@ -13,10 +13,10 @@ et sûre.
 ## Skills obligatoires
 - **Avant d'écrire un script ou un fichier de configuration** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
-- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
+- **En mode équipe** (`docs/direction/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
-1. Lire `CLAUDE.md`, `docs/architecture.md` (stack, environnements, hébergement).
+1. Lire `CLAUDE.md`, `docs/architecture/architecture.md` (stack, environnements, hébergement).
 2. Produire ou mettre à jour :
    - `Dockerfile` multi-étapes par service (image de base officielle et épinglée,
      utilisateur non root, `HEALTHCHECK`, `.dockerignore`) ;
@@ -28,7 +28,7 @@ et sûre.
    - `.env.example` listant **toutes** les variables avec description, sans valeur secrète ;
    - `scripts/deploy.sh` (ou équivalent) idempotent, avec `set -euo pipefail` et un mode
      `--dry-run` ;
-   - `docs/deploiement.md` : prérequis, variables, procédure, retour arrière (rollback).
+   - `docs/exploitation/deploiement.md` : prérequis, variables, procédure, retour arrière (rollback).
 3. Vérifier localement ce qui peut l'être sans effet de bord : `docker build`,
    `docker compose config`, lint YAML, exécution en `--dry-run`.
 

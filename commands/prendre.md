@@ -11,12 +11,12 @@ Tu es l'orchestrateur devteam. Lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/tra
 Story demandée : **$ARGUMENTS** (si vide : la prochaine story libre).
 
 ## Étapes
-1. Si `docs/equipe.md` n'existe pas : explique que la réservation sert au travail à
+1. Si `docs/direction/equipe.md` n'existe pas : explique que la réservation sert au travail à
    plusieurs, propose `/devteam:equipe`, puis continue simplement avec `/devteam:story`.
-2. Identifie l'utilisateur (`git config user.email`) dans `docs/equipe.md`. Inconnu :
+2. Identifie l'utilisateur (`git config user.email`) dans `docs/direction/equipe.md`. Inconnu :
    propose `/devteam:equipe ajouter` et arrête-toi.
 3. Vérifie que l'arbre git est propre. Sinon, demande quoi faire de ses changements.
-4. `git fetch origin --prune`. Lis `docs/backlog.md` et `docs/stories/` sur
+4. `git fetch origin --prune`. Lis `docs/produit/backlog.md` et `docs/produit/stories/` sur
    `origin/<principale>`.
 5. Choisis ou vérifie la story : statut durable `À faire`, dépendances `Terminé`, libre
    (aucune personne assignée sur son ticket, aucune branche distante `US-xxx-*`). Pour une
@@ -26,7 +26,7 @@ Story demandée : **$ARGUMENTS** (si vide : la prochaine story libre).
 7. Annonce en une ligne ce que tu vas faire (branche, commit de réservation, poussée, ticket
    assigné), puis réserve : branche `US-xxx-<slug>` depuis `origin/<principale>`, commit
    `Réservation de US-xxx par <nom>` (responsable dans le fichier de la story), `git push -u`
-   **sans forcer**, ticket assigné à l'utilisateur en `statut::en-cours` (si `docs/tickets.md`
+   **sans forcer**, ticket assigné à l'utilisateur en `statut::en-cours` (si `docs/gestion-projet/tickets.md`
    existe). L'utilisateur qui lance cette commande autorise ces actions.
    Si la poussée est refusée, la story vient d'être prise : supprime ta branche locale et
    recommence à l'étape 5.

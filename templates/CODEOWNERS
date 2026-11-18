@@ -1,11 +1,11 @@
 # devteam : relecteurs obligatoires des fichiers partagés (GitHub et GitLab lisent ce fichier
-# à la racine du dépôt). Remplacer les identifiants par ceux de docs/equipe.md.
-/docs/specs.md          @<decideur>
-/docs/backlog.md        @<product-owner> @<decideur>
-/docs/stories/          @<product-owner>
-/docs/architecture.md   @<architecte> @<decideur>
-/docs/adr/              @<architecte> @<decideur>
-/docs/equipe.md         @<decideur>
-/CODEOWNERS             @<decideur>
-/.gitattributes         @<decideur>
-/CLAUDE.md              @<architecte>
+# à la racine du dépôt). Remplacer les identifiants par ceux de docs/direction/equipe.md.
+/docs/produit/specs.md                 @<decideur>
+/docs/produit/backlog.md               @<product-owner> @<decideur>
+/docs/produit/stories/                 @<product-owner>
+/docs/architecture/architecture.md     @<architecte> @<decideur>
+/docs/architecture/adr/                @<architecte> @<decideur>
+/docs/direction/equipe.md              @<decideur>
+/CODEOWNERS                            @<decideur>
+/.gitattributes                        @<decideur>
+/CLAUDE.md                             @<architecte>

@@ -18,7 +18,7 @@
 | Règles de gestion | RG-xx \| aucune |
 
 ## Suivi
-- Revue : `docs/reviews/US-xxx.md` (à venir)
-- QA : `docs/qa/US-xxx.md` (à venir)
+- Revue : `docs/qualite/revues/US-xxx.md` (à venir)
+- QA : `docs/qualite/qa/US-xxx.md` (à venir)
 
-<!-- Source : docs/backlog.md. Toute modification se fait dans le backlog, puis par synchronisation. -->
+<!-- Source : docs/produit/backlog.md. Toute modification se fait dans le backlog, puis par synchronisation. -->

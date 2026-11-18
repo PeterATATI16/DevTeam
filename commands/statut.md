@@ -1,5 +1,5 @@
 ---
-description: "Lance le chef de projet : point d'avancement (fait, en cours, bloqué, risques) dans docs/suivi.md."
+description: "Lance le chef de projet : point d'avancement (fait, en cours, bloqué, risques) dans docs/gestion-projet/suivi.md."
 ---
 
 # /devteam:statut
@@ -16,12 +16,12 @@ transmets-lui le chemin absolu de son SKILL.md. Les agents lisent déjà leurs s
 obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 
 ## Étapes
-1. Si `docs/backlog.md` n'existe pas, indique qu'aucun projet devteam n'est initialisé
+1. Si `docs/produit/backlog.md` n'existe pas, indique qu'aucun projet devteam n'est initialisé
    et propose `/devteam:nouveau-projet`.
-2. En mode équipe (`docs/equipe.md` existe), applique plutôt `/devteam:synchro --sans-rebase`,
+2. En mode équipe (`docs/direction/equipe.md` existe), applique plutôt `/devteam:synchro --sans-rebase`,
    qui collecte l'état vivant de l'équipe puis appelle le chef de projet. Sinon :
-   appelle `devteam:chef-de-projet` avec : les chemins `docs/backlog.md`, `docs/stories/`,
-   `docs/reviews/`, `docs/qa/`, `docs/adr/`, `docs/specs.md`, l'ancien `docs/suivi.md`,
+   appelle `devteam:chef-de-projet` avec : les chemins `docs/produit/backlog.md`, `docs/produit/stories/`,
+   `docs/qualite/revues/`, `docs/qualite/qa/`, `docs/architecture/adr/`, `docs/produit/specs.md`, l'ancien `docs/gestion-projet/suivi.md`,
    le modèle `templates/suivi.md`.
 3. Affiche la synthèse : météo, avancement du MVP et du sprint, blocages, décisions
    attendues, prochaines commandes recommandées.

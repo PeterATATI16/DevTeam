@@ -1,5 +1,5 @@
 # devteam : journaux en ajout seul, fusionnés sans conflit quand deux branches y ajoutent
 # des blocs en même temps (pilote « union » intégré à git, aucune configuration requise).
-docs/decisions-ceo.md merge=union
-docs/tickets.md       merge=union
-CHANGELOG.md          merge=union
+docs/direction/decisions-ceo.md    merge=union
+docs/gestion-projet/tickets.md     merge=union
+CHANGELOG.md                       merge=union

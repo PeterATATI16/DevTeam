@@ -6,7 +6,7 @@
 #     ou une mention de Claude ;
 #   - commit dont le résumé commence par un préfixe de type (feat:, fix(x):, docs: …) ;
 #   - création de branche préfixée par un type (feat/, feature/, fix/, docs/ …) ;
-#   - en mode équipe (docs/equipe.md présent) : commit ou push sur la branche principale.
+#   - en mode équipe (docs/direction/equipe.md présent) : commit ou push sur la branche principale.
 # Code 2 : la commande n'est pas exécutée et le motif est renvoyé à Claude, qui corrige.
 # Toute autre situation : code 0, la commande s'exécute normalement.
 # Portable : Linux, macOS, Windows (Git Bash).
@@ -100,8 +100,8 @@ fi
 depot="$(printf '%s' "$cmd" | sed -nE "s/.*git[[:space:]]+-C[[:space:]]+[\"']?([^\"' ]+).*/\1/p" | head -n1)"
 [ -z "$depot" ] && depot="${cwd:-.}"
 racine="$(git -C "$depot" rev-parse --show-toplevel 2>/dev/null)"
-if [ -n "$racine" ] && [ -f "$racine/docs/equipe.md" ]; then
-  principale="$(sed -nE 's/^\| *Branche principale *\| *`?([^`| ]+)`? *\|.*/\1/p' "$racine/docs/equipe.md" | head -n1)"
+if [ -n "$racine" ] && [ -f "$racine/docs/direction/equipe.md" ]; then
+  principale="$(sed -nE 's/^\| *Branche principale *\| *`?([^`| ]+)`? *\|.*/\1/p' "$racine/docs/direction/equipe.md" | head -n1)"
   [ -z "$principale" ] && principale="main"
   courante="$(git -C "$depot" branch --show-current 2>/dev/null)"
   # Commande composée qui change de branche avant d'agir (git switch -c US-012-… && git commit) :

@@ -14,8 +14,8 @@ Story : **$ARGUMENTS** (si vide : celle de la branche courante `US-xxx-…`).
 
 ## Étapes
 1. Vérifie que tu es sur la branche de la story et que l'arbre est propre.
-2. Vérifie les préconditions : `docs/reviews/US-xxx.md` au verdict `APPROUVÉ` et
-   `docs/qa/US-xxx.md` au verdict `VALIDÉ`, pour la dernière itération. Sinon, propose
+2. Vérifie les préconditions : `docs/qualite/revues/US-xxx.md` au verdict `APPROUVÉ` et
+   `docs/qualite/qa/US-xxx.md` au verdict `VALIDÉ`, pour la dernière itération. Sinon, propose
    `/devteam:story US-xxx` et arrête-toi.
 3. `git fetch origin && git rebase origin/<principale>`.
    - Conflit sur un fichier de code : appelle le développeur concerné (`devteam:dev-*`) pour
@@ -24,11 +24,11 @@ Story : **$ARGUMENTS** (si vide : celle de la branche courante `US-xxx-…`).
      version de `main` et signale-le.
 4. Relance **toute** la suite de tests (commande de `CLAUDE.md`). En échec : appelle
    `devteam:qa-testeur`, puis le développeur, et ne livre pas.
-5. Dans `docs/stories/US-xxx.md` : statut `Terminé`, liens vers la revue et la QA, nombre
+5. Dans `docs/produit/stories/US-xxx.md` : statut `Terminé`, liens vers la revue et la QA, nombre
    d'itérations, responsable. Commit `Livraison de US-xxx` avec la ligne `Story : US-xxx`.
-6. Prépare la description de la merge request dans `docs/reviews/US-xxx-mr.md` (non
+6. Prépare la description de la merge request dans `docs/qualite/revues/US-xxx-mr.md` (non
    versionné) : contexte, changements, vérifications, `Closes #n` si un ticket existe.
-   Choisis le relecteur humain : un autre membre de `docs/equipe.md` ayant le bon rôle, le
+   Choisis le relecteur humain : un autre membre de `docs/direction/equipe.md` ayant le bon rôle, le
    moins chargé en relectures ouvertes.
 7. ✋ Affiche ce qui va partir (branche, titre, relecteur, nombre de commits) et demande
    l'accord. Puis : `git push --force-with-lease`, création de la merge request, ticket en

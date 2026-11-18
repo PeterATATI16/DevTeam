@@ -91,7 +91,7 @@ Ne jamais ajouter une couche qui n'apporte rien.
 
 - ❌ À éviter : 5 couches, des ports et un conteneur d'injection pour une API de 3 routes.
 - ✅ À faire : commencer allégé, et extraire `domain/` quand les règles métier apparaissent.
-- Tout écart à la structure de référence est noté dans `docs/architecture.md` (ou un ADR).
+- Tout écart à la structure de référence est noté dans `docs/architecture/architecture.md` (ou un ADR).
 
 ## 6. Exemple complet d'un cas d'usage
 

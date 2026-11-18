@@ -18,6 +18,12 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions : [S
 - Hook git : en mode équipe, commit et push refusés sur la branche principale.
 
 ### Modifié
+- **`docs/` rangé par département** : `direction/`, `gestion-projet/`, `produit/`,
+  `architecture/`, `design/`, `qualite/`, `securite/`, `exploitation/`, `documentation/`, avec
+  un plan de classement `docs/README.md` (modèle `templates/docs-README.md`). Plus aucun fichier
+  à la racine de `docs/`. Les rapports de revue passent de `reviews/` à `qualite/revues/`.
+- Commande `/devteam:organiser` : range un projet existant (déplacements par `git mv`, une
+  story par fichier, journaux en ajout seul, liens mis à jour, contrôle de complétude).
 - Une story par fichier (`docs/stories/US-xxx.md`) ; `docs/backlog.md` devient l'index du PO.
   Les anciens projets restent lisibles ; `/devteam:equipe migrer` les convertit.
 - Journal des décisions et suivi des tickets en ajout seul, fusionnés sans conflit

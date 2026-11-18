@@ -1,6 +1,6 @@
 # Backlog : <Nom du projet>
 
-> Index tenu par le product-owner. Le contenu de chaque story est dans `docs/stories/US-xxx.md`
+> Index tenu par le product-owner. Le contenu de chaque story est dans `docs/produit/stories/US-xxx.md`
 > (rédigé par le business-analyst). Le statut de chaque story est dans son fichier et sur son
 > ticket, pas ici : ce fichier ne change donc qu'aux arbitrages du PO.
 

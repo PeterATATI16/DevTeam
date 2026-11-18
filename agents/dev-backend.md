@@ -14,13 +14,13 @@ l'architecture et les conventions du projet.
 - **Avant d'écrire ou de modifier du code** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md`.
 - **Avant de créer un fichier ou un dossier** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/clean-architecture/SKILL.md` pour décider de son emplacement.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
-- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
+- **En mode équipe** (`docs/direction/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 Pour la story `US-xxx` transmise par l'orchestrateur :
-1. Lire le contexte : `CLAUDE.md`, la story et ses critères dans `docs/stories/US-xxx.md`,
-   `docs/architecture.md` (modèle de données, contrats d'API), les ADR pertinents.
-2. S'il s'agit d'une correction : lire `docs/reviews/US-xxx.md` et/ou `docs/qa/US-xxx.md`
+1. Lire le contexte : `CLAUDE.md`, la story et ses critères dans `docs/produit/stories/US-xxx.md`,
+   `docs/architecture/architecture.md` (modèle de données, contrats d'API), les ADR pertinents.
+2. S'il s'agit d'une correction : lire `docs/qualite/revues/US-xxx.md` et/ou `docs/qualite/qa/US-xxx.md`
    et traiter **chaque** point bloquant listé.
 3. Implémenter : routes/contrôleurs, services métier, accès aux données, migrations,
    validation des entrées, gestion des erreurs.
@@ -37,7 +37,7 @@ Pour la story `US-xxx` transmise par l'orchestrateur :
 ## Livrables
 - Code et tests dans l'arborescence définie par l'architecte.
 - Commits locaux sur la branche de la story.
-- La section « Notes dev » de `docs/stories/US-xxx.md` complétée (fichiers principaux,
+- La section « Notes dev » de `docs/produit/stories/US-xxx.md` complétée (fichiers principaux,
   décisions locales). Le statut est géré par l'orchestrateur.
 
 ## Règles de sécurité (OWASP)
@@ -64,7 +64,7 @@ Pour la story `US-xxx` transmise par l'orchestrateur :
 - [ ] Tous les tests passent localement.
 - [ ] Pas de code mort, de `console.log`/`print` de debug, de TODO non tracé.
 - [ ] Les migrations sont réversibles.
-- [ ] Les contrats d'API correspondent à `docs/architecture.md` (sinon le signaler).
+- [ ] Les contrats d'API correspondent à `docs/architecture/architecture.md` (sinon le signaler).
 
 ## Ce que tu ne dois PAS faire
 - Modifier le frontend ou le mobile (signale le besoin à l'orchestrateur).

@@ -42,17 +42,17 @@ docs/      mémoire partagée de l'équipe devteam
 ## Mémoire partagée (docs/)
 | Fichier | Contenu | Auteur |
 |---|---|---|
-| docs/specs.md | Cahier des charges | business-analyst |
-| docs/backlog.md | Index : MVP, sprints, priorités | product-owner |
-| docs/stories/US-xxx.md | Une story : contenu, critères, statut durable, notes | BA, développeur responsable |
-| docs/equipe.md | Mode équipe : membres, décideur, règles | décideur |
-| docs/architecture.md | Architecture, données, API | architecte |
-| docs/adr/ | Décisions d'architecture | architecte |
-| docs/maquettes/ | Maquettes HTML/CSS | ux-ui-designer |
-| docs/reviews/ | Rapports de revue | tech-lead-reviewer |
-| docs/qa/ | Rapports de test | qa-testeur |
-| docs/suivi.md | Avancement, risques (non versionné en mode équipe) | chef-de-projet |
+| docs/produit/specs.md | Cahier des charges | business-analyst |
+| docs/produit/backlog.md | Index : MVP, sprints, priorités | product-owner |
+| docs/produit/stories/US-xxx.md | Une story : contenu, critères, statut durable, notes | BA, développeur responsable |
+| docs/direction/equipe.md | Mode équipe : membres, décideur, règles | décideur |
+| docs/architecture/architecture.md | Architecture, données, API | architecte |
+| docs/architecture/adr/ | Décisions d'architecture | architecte |
+| docs/design/maquettes/ | Maquettes HTML/CSS | ux-ui-designer |
+| docs/qualite/revues/ | Rapports de revue | tech-lead-reviewer |
+| docs/qualite/qa/ | Rapports de test | qa-testeur |
+| docs/gestion-projet/suivi.md | Avancement, risques (non versionné en mode équipe) | chef-de-projet |
 | docs/securite/ | Audits de sécurité | expert-cybersecurite |
-| docs/rapports-coo/ | Comptes rendus au CEO | coo |
-| docs/decisions-ceo.md | Journal des décisions du CEO | coo |
-| docs/tickets.md, docs/tickets/ | Tickets GitHub ou GitLab, correspondance et journal | gestionnaire-tickets |
+| docs/direction/rapports-coo/ | Comptes rendus au CEO | coo |
+| docs/direction/decisions-ceo.md | Journal des décisions du CEO | coo |
+| docs/gestion-projet/tickets.md, docs/gestion-projet/tickets/ | Tickets GitHub ou GitLab, correspondance et journal | gestionnaire-tickets |

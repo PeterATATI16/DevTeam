@@ -23,9 +23,9 @@ Options : **$ARGUMENTS**
    - les stories bloquées (`statut::bloque`) ;
    - les stories libres prêtes à prendre (statut `À faire`, dépendances terminées, non réservées) ;
    - les conflits probables : fichiers modifiés à la fois par deux branches de story ouvertes.
-4. Écris ce relevé dans `docs/etat-equipe.md` (non versionné, ajoute-le au `.gitignore`), puis
-   appelle `devteam:chef-de-projet` avec ce fichier et `docs/stories/` pour produire
-   `docs/suivi.md` (non versionné en mode équipe).
+4. Écris ce relevé dans `docs/gestion-projet/etat-equipe.md` (non versionné, ajoute-le au `.gitignore`), puis
+   appelle `devteam:chef-de-projet` avec ce fichier et `docs/produit/stories/` pour produire
+   `docs/gestion-projet/suivi.md` (non versionné en mode équipe).
 5. Affiche une vue courte :
 
 ```
