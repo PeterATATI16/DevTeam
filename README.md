@@ -5,7 +5,7 @@ Chaque rôle d'une vraie équipe devient un **subagent spécialisé**. Des **com
 orchestrent le cycle de vie d'un projet : cadrage, conception, sprints, revue, tests,
 déploiement, documentation et suivi.
 
-> Version 0.5.0, auteur : Peter ATATI
+> Version 0.6.0, auteur : Peter ATATI
 
 ---
 
@@ -83,6 +83,10 @@ fichiers** dans le dépôt du projet.
 | `/devteam:tests [id]` | QA seul |
 | `/devteam:securite [id\|branche\|tout]` | Expert cybersécurité seul (proposé automatiquement avant un déploiement staging ou production) |
 | `/devteam:tickets [plan\|synchroniser] [cible]` | Publie et synchronise les tickets GitHub ou GitLab |
+| `/devteam:equipe [initialiser\|ajouter\|migrer]` | Active le mode équipe, ajoute un membre, migre un ancien backlog |
+| `/devteam:prendre [US-xxx]` | Réserve une story pour soi (mode équipe) |
+| `/devteam:livrer [US-xxx]` | Livre sa story par merge request, avec relecteur humain (mode équipe) |
+| `/devteam:synchro` | Vue d'équipe : qui fait quoi, relectures en attente, conflits probables |
 | `/devteam:deploy [env]` | DevOps, avec confirmation action par action avant tout geste irréversible |
 | `/devteam:doc [périmètre]` | Rédacteur technique |
 | `/devteam:statut` | Chef de projet |
@@ -100,7 +104,7 @@ fichiers** dans le dépôt du projet.
 | `code-review` | grille fondée sur les deux précédentes, format fixe Bloquant / À améliorer / Suggestion, sur-ingénierie et duplication | tech-lead-reviewer, expert-cybersecurite |
 | `style-equipe` | interdiction des tirets longs et des tics d'écriture « IA », interfaces sans « look IA », organisation stricte des livrables | tous les agents |
 
-**Procédures métier** : `gestion-tickets` (gestionnaire des tickets) · `redaction-user-story` (BA) · `code-review-checklist` (OWASP, tech lead et sécurité) · `plan-de-test` (QA) · `conventions-git` (développeurs) · `adr` (architecte)
+**Procédures métier** : `travail-en-equipe` (tous, en mode équipe) · `gestion-tickets` (gestionnaire des tickets) · `redaction-user-story` (BA) · `code-review-checklist` (OWASP, tech lead et sécurité) · `plan-de-test` (QA) · `conventions-git` (développeurs) · `adr` (architecte)
 
 Chaque agent a une section « Skills obligatoires » dans son prompt. Elle lui indique quelle skill lire,
 et à quel moment, via son chemin `${CLAUDE_PLUGIN_ROOT}/skills/<nom>/SKILL.md`.
@@ -125,7 +129,9 @@ mon-projet/
 ├── CLAUDE.md              # stack, commandes, conventions (lu par tous les agents)
 └── docs/
     ├── specs.md           # cahier des charges            ← business-analyst
-    ├── backlog.md         # stories, priorités, statuts   ← BA, PO, devs
+    ├── backlog.md         # index : MVP, sprints, priorités ← product-owner
+    ├── stories/           # une story par fichier         ← BA, développeur responsable
+    ├── equipe.md          # mode équipe : membres, règles ← décideur
     ├── architecture.md    # architecture, données, API     ← architecte
     ├── adr/               # décisions d'architecture       ← architecte
     ├── maquettes/         # maquettes HTML/CSS             ← ux-ui-designer
@@ -356,6 +362,51 @@ le champ « Status » d'un projet si vous en indiquez un.
 
 ---
 
+## Travailler à plusieurs : le mode équipe
+
+Plusieurs personnes peuvent utiliser devteam sur le même dépôt, chacune avec sa session et
+son COO. La règle tient en une phrase : **chacun travaille sur sa branche, dans ses fichiers,
+et tout ce qui est partagé passe par une merge request**.
+
+### Ce qui évite de se marcher dessus
+
+| Risque | Parade |
+|---|---|
+| Deux personnes sur la même story | Réservation par `/devteam:prendre` : commit de réservation poussé sans forcer (git refuse la seconde poussée), ticket assigné, contrôle de la course |
+| Conflits sur le backlog | **Une story par fichier** (`docs/stories/US-xxx.md`). `docs/backlog.md` n'est plus qu'un index tenu par le PO |
+| Conflits sur les journaux | Décisions et tickets en **ajout seul**, fusionnés automatiquement (`merge=union` dans `.gitattributes`), identifiants uniques `D-AAAAMMJJ-HHMM-<initiales>` |
+| Statuts contradictoires | Statut **durable** (À faire, Terminé) dans le fichier, qui ne change qu'à la fusion. Statut **vivant** (en cours, en revue, bloqué) sur le ticket, visible par tous en temps réel |
+| Code poussé directement sur `main` | Le hook refuse commit et push sur la branche principale. Protégez aussi la branche sur GitHub ou GitLab |
+| Fichiers partagés modifiés par n'importe qui | Propriétaire désigné par fichier (`docs/equipe.md`), relecture obligatoire via `CODEOWNERS` |
+| Plusieurs COO qui décident | Un seul **décideur**. Le COO des autres membres **propose** les décisions, le décideur tranche |
+| Branches qui divergent | Resynchronisation avant de commencer, chaque jour et avant de livrer, et détection des conflits probables par `/devteam:synchro` |
+
+### Mise en place (une fois, par le décideur)
+1. Le dépôt est partagé sur GitHub ou GitLab.
+2. `/devteam:equipe` déclare les membres, le décideur et la limite de stories en cours. Il crée
+   `docs/equipe.md`, `.gitattributes` et `CODEOWNERS`, migre un ancien backlog en un fichier par
+   story et ouvre une merge request. Le mode équipe est actif pour tous après la fusion.
+3. Protégez la branche principale (procédure dans la skill `travail-en-equipe`).
+4. Recommandé : publiez le backlog en tickets (`/devteam:tickets`).
+
+### La journée d'un développeur
+
+| Il dit au COO (ou tape) | Ce qui se passe |
+|---|---|
+| « Je prends la suivante » (`/devteam:prendre`) | Première story libre du sprint, dépendances terminées, dans sa limite : branche `US-015-…`, commit de réservation poussé, ticket assigné |
+| « Réalise-la » (`/devteam:story US-015`) | Boucle développeur, tech lead, QA sur **sa** branche |
+| « Je livre » (`/devteam:livrer`) | Resynchronisation sur `main`, tous les tests, statut Terminé, push de sa branche, merge request avec un relecteur humain choisi dans l'équipe, ticket en revue |
+| « Qui fait quoi ? » (`/devteam:synchro`) | Tableau de l'équipe, relectures à faire, stories bloquées ou libres, fichiers touchés par deux branches à la fois |
+
+La fusion reste un geste humain : un membre autorisé approuve et fusionne la merge request,
+et le ticket se ferme alors tout seul.
+
+Seul sur un projet ? Rien ne change : sans `docs/equipe.md`, les commandes fonctionnent comme
+avant. Seule nouveauté, les stories sont rangées une par fichier. Un ancien projet continue de
+fonctionner, et `/devteam:equipe migrer` le convertit quand vous le souhaitez.
+
+---
+
 ## Exemple de bout en bout : gestion des sinistres d'une compagnie d'assurance
 
 ### 1. Cadrage et conception
@@ -440,7 +491,8 @@ Un hook `PreToolUse` sur `Bash` lance [`hooks/controle-git.sh`](hooks/controle-g
 **refuse** la commande, qui n'est donc pas exécutée, et renvoie le motif à Claude dans trois cas :
 - un commit contient une ligne d'attribution (`Co-Authored-By`, « Generated with ») ou une mention de Claude ;
 - le résumé d'un commit commence par un préfixe de type (`feat:`, `fix(auth):`, `docs:` …) ;
-- une branche créée est préfixée par un type (`feat/`, `feature/`, `fix/`, `docs/` …).
+- une branche créée est préfixée par un type (`feat/`, `feature/`, `fix/`, `docs/` …) ;
+- en **mode équipe** : un commit sur la branche principale, ou un push vers elle.
 
 Il lit le message passé par `-m`, par un heredoc ou par un fichier `-F`. Les conventions
 attendues sont celles de la skill `conventions-git` : branches `US-012-declaration-sinistre`,
@@ -546,8 +598,8 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 │   ├── plugin.json          # manifeste du plugin
 │   └── marketplace.json     # marketplace pointant vers ce dépôt
 ├── agents/                  # 14 subagents + le COO (agent principal)
-├── commands/                # 12 commandes /devteam:*
-├── skills/                  # 10 skills (SKILL.md, et references/ si besoin)
+├── commands/                # 16 commandes /devteam:*
+├── skills/                  # 11 skills (SKILL.md, et references/ si besoin)
 ├── hooks/                   # hooks.json, controle-git.sh, lint-si-present.sh
 ├── templates/               # modèles de la mémoire partagée
 ├── README.md
@@ -558,7 +610,7 @@ Les agents sont appelés sous la forme `devteam:<name>`.
 
 | Phase | Contenu | Statut |
 |---|---|---|
-| 1 | Équipe de 14 agents, commandes, standards de code, mode CEO avec le COO, tickets GitHub et GitLab, fonctionnement 100 % terminal | Livrée (0.5.0) |
+| 1 | Équipe de 14 agents, commandes, standards de code, mode CEO avec le COO, tickets GitHub et GitLab, mode équipe, fonctionnement 100 % terminal | Livrée (0.6.0) |
 | 2 | Connexion du COO à Microsoft Teams (notifications et échanges bidirectionnels via Claude Code en mode headless, sans clé API) | Prévue |
 
 La phase 2 est préparée sans être implémentée. Le plugin ne contient aucun bridge, webhook,

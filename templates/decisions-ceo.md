@@ -1,22 +1,19 @@
 # Journal des décisions du CEO
 
-> Tenu par le COO. Relu avant chaque nouvelle mission. Une décision n'est jamais effacée :
-> si le CEO change d'avis, on ajoute une nouvelle entrée qui remplace l'ancienne.
+> Tenu par le COO. Relu avant chaque nouvelle mission.
+> **Ajout seul** : on ajoute un bloc à la fin, on ne modifie jamais un bloc existant
+> (fusion sans conflit grâce à `merge=union` dans `.gitattributes`). Pour changer d'avis, on
+> ajoute une décision qui indique « Remplace : D-… ».
+> Identifiant : `D-AAAAMMJJ-HHMM-<initiales>`, unique même quand plusieurs personnes écrivent.
 
-## Décisions en vigueur (résumé)
-| ID | Sujet | Décision | Date |
-|---|---|---|---|
-| D-001 | | | AAAA-MM-JJ |
-
----
-
-## Historique
-
-### D-001 : <sujet>
+### D-AAAAMMJJ-HHMM-XX : <sujet>
+- **Statut** : Proposée | Décidée | Refusée
 - **Date** : AAAA-MM-JJ HH:MM
-- **Contexte** : <mission, rapport COO d'origine : `docs/rapports-coo/AAAA-MM-JJ-HHMM.md`>
+- **Auteur** : <COO de qui>
+- **Contexte** : <mission, rapport d'origine : `docs/rapports-coo/<auteur>/AAAA-MM-JJ-HHMM.md`>
 - **Question posée** : <question>
 - **Recommandation du COO** : <option>
-- **Décision du CEO** : <réponse, au plus près de ses mots>
+- **Décision du CEO** : <réponse du décideur, au plus près de ses mots> | en attente
+- **Répond à** : <D-… de la proposition, pour une décision prise sur une proposition> | sans objet
+- **Remplace** : <D-… remplacée> | aucune
 - **Conséquences** : <ce qui change pour l'équipe>
-- **Statut** : En vigueur | Remplacée par D-0xx

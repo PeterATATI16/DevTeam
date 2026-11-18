@@ -1,6 +1,7 @@
 # Suivi des tickets
 
-> Tenu par : gestionnaire-tickets · Dernière synchronisation : AAAA-MM-JJ HH:MM
+> Tenu par : gestionnaire-tickets. **Ajout seul** pour la correspondance et le journal
+> (`merge=union`) : le statut vivant de chaque story se lit sur la plateforme, pas ici.
 
 ## Configuration
 | Paramètre | Valeur |
@@ -14,14 +15,14 @@
 ## Autorisation
 - **Activation et créations** : accordées par le CEO le AAAA-MM-JJ (décision `D-xxx`).
 - **Synchronisation automatique** (déplacements et fermetures des tickets existants après un
-  changement de statut du backlog) : autorisée | non autorisée.
+  changement de statut d'une story) : autorisée | non autorisée.
 
 ## Correspondance
-| Story | Ticket | URL | Statut synchronisé | Sprint |
-|---|---|---|---|---|
-| US-001 | #1 | <url> | À faire | Sprint 1 |
+| Story | Ticket | URL | Créé le |
+|---|---|---|---|
+| US-001 | #1 | <url> | AAAA-MM-JJ |
 
 ## Journal
-| Date | Mode | Actions | Résultat |
-|---|---|---|---|
-| AAAA-MM-JJ HH:MM | appliquer | 5 créations, 0 déplacement, 0 fermeture | 5 / 5 réussies |
+| Date | Par | Mode | Actions | Résultat |
+|---|---|---|---|---|
+| AAAA-MM-JJ HH:MM | <initiales> | appliquer | 5 créations, 0 déplacement, 0 fermeture | 5 / 5 réussies |

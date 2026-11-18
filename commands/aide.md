@@ -17,7 +17,7 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 ## L'équipe
 | Rôle | Agent | Livrables |
 |---|---|---|
-| Business Analyst | `devteam:business-analyst` | `docs/specs.md`, `docs/backlog.md` |
+| Business Analyst | `devteam:business-analyst` | `docs/specs.md`, `docs/stories/`, index `docs/backlog.md` |
 | Product Owner | `devteam:product-owner` | priorités MoSCoW, MVP, sprints |
 | Architecte | `devteam:architecte` | `docs/architecture.md`, `docs/adr/`, `CLAUDE.md` |
 | Designer UX/UI | `devteam:ux-ui-designer` | `docs/maquettes/` |
@@ -46,6 +46,10 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | `/devteam:doc [périmètre]` | Documentation |
 | `/devteam:statut` | Point d'avancement |
 | `/devteam:coo [instruction]` | Mode CEO : la session devient le COO |
+| `/devteam:equipe [initialiser\|ajouter\|migrer]` | Mode équipe : plusieurs personnes sur le dépôt |
+| `/devteam:prendre [US-xxx]` | Réserver une story (mode équipe) |
+| `/devteam:livrer [US-xxx]` | Livrer sa story par merge request (mode équipe) |
+| `/devteam:synchro` | Vue d'équipe et resynchronisation |
 | `/devteam:aide [commande]` | Cette aide |
 
 ## Déroulé type
@@ -62,6 +66,12 @@ ou `/devteam:coo` dans la session en cours. Aucune autre commande n'est nécessa
 | `clean-architecture` | couches, emplacement des fichiers, `shared/`, proportionnalité | développeurs, architecte |
 | `code-review` | grille et format Bloquant / À améliorer / Suggestion | tech lead, expert cybersécurité |
 | `style-equipe` | aucun tiret long, aucune interface au « look IA », organisation stricte | tous les agents |
+
+## Travailler à plusieurs
+Avec `docs/equipe.md` (créé par `/devteam:equipe`), chaque membre réserve ses stories
+(`/devteam:prendre`), travaille sur sa branche et livre par merge request relue par un humain
+(`/devteam:livrer`). `/devteam:synchro` montre qui fait quoi. Le hook interdit tout commit
+direct sur la branche principale.
 
 ## Principes
 - Les agents ne se parlent pas directement : ils échangent par les fichiers de `docs/`

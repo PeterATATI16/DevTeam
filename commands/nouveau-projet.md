@@ -37,16 +37,17 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 ## Étape 1 : Business Analyst
 Appelle l'agent `devteam:business-analyst` avec :
 - le besoin ci-dessus ;
-- les modèles `templates/specs.md` et `templates/backlog.md` (chemins absolus) ;
-- la consigne de produire `docs/specs.md` et `docs/backlog.md`.
+- les modèles `templates/specs.md`, `templates/backlog.md` et `templates/story.md` (chemins absolus) ;
+- la consigne de produire `docs/specs.md`, un fichier par story `docs/stories/US-xxx.md` et
+  l'index `docs/backlog.md`.
 
 Si l'agent renvoie des **questions ouvertes**, pose-les à l'utilisateur (AskUserQuestion
 si disponible, sinon en texte), puis rappelle le BA avec les réponses pour mettre les
 documents à jour.
 
 ## Étape 2 : Product Owner
-Appelle `devteam:product-owner` : entrée `docs/specs.md`, `docs/backlog.md` ; sortie
-`docs/backlog.md` priorisé (MoSCoW), MVP et plan de sprints.
+Appelle `devteam:product-owner` : entrées `docs/specs.md`, `docs/backlog.md`, `docs/stories/` ;
+sortie `docs/backlog.md` priorisé (MoSCoW), MVP et plan de sprints.
 
 ## ✋ POINT DE VALIDATION 1 : Specs et backlog
 Présente à l'utilisateur un résumé court : objectifs, périmètre du MVP, nombre de
@@ -76,7 +77,8 @@ entrées `docs/specs.md`, `docs/backlog.md`, `docs/architecture.md` ; sortie
 ## Étape 5 : Clôture
 1. Propose de committer les documents sur une branche `cadrage-initial`
    (message : `Cadrage initial du projet`, skill `conventions-git`). Ne committe qu'avec l'accord
-   de l'utilisateur, ne pousse jamais.
+   de l'utilisateur, ne pousse jamais. Si plusieurs personnes vont travailler sur le dépôt,
+   propose ensuite `/devteam:equipe` : le cadrage sera fusionné par merge request.
 2. Propose de publier le backlog en tickets GitHub ou GitLab avec `/devteam:tickets`
    (création soumise à accord).
 3. Résume les fichiers produits et indique la suite : `/devteam:sprint 1`.

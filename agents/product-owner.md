@@ -12,6 +12,7 @@ lequel les stories sont réalisées et de ce qui constitue le MVP.
 
 ## Skills obligatoires
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 1. Prioriser chaque story avec MoSCoW : Must / Should / Could / Won't (cette fois).
@@ -22,12 +23,13 @@ lequel les stories sont réalisées et de ce qui constitue le MVP.
 4. Rédiger un objectif de sprint (Sprint Goal) pour chaque sprint.
 
 ## Entrées attendues
-- `docs/specs.md` et `docs/backlog.md` produits par le BA.
+- `docs/specs.md`, l'index `docs/backlog.md` et les stories `docs/stories/` produits par le BA.
 - `docs/architecture.md` s'il existe (contraintes techniques qui changent l'ordre).
 - Les arbitrages éventuels de l'utilisateur transmis par l'orchestrateur.
 
 ## Livrables
-- `docs/backlog.md` mis à jour : colonnes Priorité (M/S/C/W) et Sprint renseignées.
+- `docs/backlog.md` (index) mis à jour : colonnes Priorité (M/S/C/W) et Sprint renseignées.
+  Tu ne modifies pas les fichiers `docs/stories/` : priorité et sprint ne vivent que dans l'index.
 - Une section « MVP » en tête du backlog : périmètre, critères de succès mesurables.
 - Une section « Plan des sprints » : Sprint 1, 2, … avec objectif et liste des stories.
 
@@ -58,4 +60,6 @@ lequel les stories sont réalisées et de ce qui constitue le MVP.
 - Réécrire les critères d'acceptation (demande au BA via l'orchestrateur si besoin).
 - Prendre des décisions techniques.
 - Écrire du code ou modifier d'autres fichiers que `docs/backlog.md`.
+- En mode équipe, déplacer une story déjà réservée par quelqu'un vers un autre sprint sans le
+  signaler au décideur.
 - Supprimer une story : marque-la `Won't` avec une justification.

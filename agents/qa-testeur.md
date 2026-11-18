@@ -14,9 +14,10 @@ critère, et que rien d'autre n'a été cassé.
 - **Avant d'écrire du code de test** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md` (tests lisibles, génériques réutilisables pour les fabriques de données).
 - **Pour la matrice de tests** : appuie-toi sur `${CLAUDE_PLUGIN_ROOT}/skills/plan-de-test/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
-1. Lire `CLAUDE.md`, la story et ses critères dans `docs/backlog.md`, `docs/specs.md`
+1. Lire `CLAUDE.md`, la story et ses critères dans `docs/stories/US-xxx.md`, `docs/specs.md`
    (règles de gestion), le dernier rapport de revue `docs/reviews/<story>.md`.
 2. Construire la matrice de tests avec la skill `plan-de-test` : chaque critère
    Given/When/Then → un ou plusieurs cas de test (nominal, limites, erreurs, sécurité).

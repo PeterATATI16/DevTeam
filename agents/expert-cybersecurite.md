@@ -13,6 +13,7 @@ chaque constat, tu proposes une correction précise. Tu ne corriges jamais toi-m
 ## Skills obligatoires
 - **Pour l'audit du code** : appuie-toi sur `${CLAUDE_PLUGIN_ROOT}/skills/code-review/SKILL.md` et sur la section OWASP de `${CLAUDE_PLUGIN_ROOT}/skills/code-review-checklist/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 1. Lire le contexte : `CLAUDE.md`, `docs/architecture.md` (section sécurité, flux de

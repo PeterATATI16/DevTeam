@@ -18,7 +18,9 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 ## Étapes
 1. Si `docs/backlog.md` n'existe pas, indique qu'aucun projet devteam n'est initialisé
    et propose `/devteam:nouveau-projet`.
-2. Appelle `devteam:chef-de-projet` avec : les chemins `docs/backlog.md`,
+2. En mode équipe (`docs/equipe.md` existe), applique plutôt `/devteam:synchro --sans-rebase`,
+   qui collecte l'état vivant de l'équipe puis appelle le chef de projet. Sinon :
+   appelle `devteam:chef-de-projet` avec : les chemins `docs/backlog.md`, `docs/stories/`,
    `docs/reviews/`, `docs/qa/`, `docs/adr/`, `docs/specs.md`, l'ancien `docs/suivi.md`,
    le modèle `templates/suivi.md`.
 3. Affiche la synthèse : météo, avancement du MVP et du sprint, blocages, décisions

@@ -1,13 +1,15 @@
 ---
 name: gestion-tickets
-description: "Synchronisation du backlog (docs/backlog.md) avec les tickets GitHub ou GitLab : création, mise à jour, déplacement sur le tableau selon le statut, fermeture. À utiliser pour publier ou tenir à jour les tickets d'un projet."
+description: "Synchronisation des stories (docs/stories/ et l'index docs/backlog.md) avec les tickets GitHub ou GitLab : création, mise à jour, déplacement sur le tableau selon le statut, fermeture. À utiliser pour publier ou tenir à jour les tickets d'un projet."
 ---
 
 # Gestion des tickets GitHub et GitLab
 
-Le backlog `docs/backlog.md` est la **source de vérité**. Les tickets en sont le reflet :
-on modifie le backlog, puis on synchronise. On ne modifie jamais le backlog à partir d'un
-ticket, sauf pour y noter le numéro du ticket.
+Les fichiers `docs/stories/US-xxx.md` (contenu, statut durable) et l'index `docs/backlog.md`
+(priorité, sprint) sont la **source de vérité** du contenu. Les tickets en sont le reflet : on
+modifie les fichiers, puis on synchronise. On ne modifie jamais une story à partir d'un ticket,
+sauf pour y noter le numéro du ticket. Ancien format (stories dans `docs/backlog.md`) : lire
+les stories dans le backlog.
 
 ## 1. Détecter la plateforme
 
@@ -28,7 +30,7 @@ git remote get-url origin
   [references/gitlab.md](references/gitlab.md). En cas d'erreur de syntaxe, vérifier avec
   `gh <commande> --help` ou `glab <commande> --help` avant de réessayer.
 
-## 2. Correspondance backlog et tickets
+## 2. Correspondance stories et tickets
 
 | Backlog | Ticket |
 |---|---|
@@ -38,7 +40,8 @@ git remote get-url origin
 | Tags `[back]` `[front]` `[mobile]` `[devops]` | Labels `perimetre::back` … |
 | Estimation S / M / L / XL | Label `estimation::s` … |
 | Sprint N | Milestone `Sprint N` |
-| Statut | Label `statut::…`, colonne du tableau, ouvert ou fermé (section 3) |
+| Statut durable (fichier de la story) et statut vivant (transmis par l'orchestrateur) | Label `statut::…`, colonne du tableau, ouvert ou fermé (section 3) |
+| Responsable | Personne assignée (posée par `/devteam:prendre`, jamais modifiée par la synchronisation) |
 
 Les mêmes noms de labels servent sur les deux plateformes. Sur GitLab, la forme `clé::valeur`
 crée des labels exclusifs : un ticket n'a qu'un seul `statut::…` à la fois. Sur GitHub, l'agent
@@ -46,7 +49,7 @@ retire lui-même l'ancien label de statut.
 
 ## 3. Statuts et déplacements
 
-| Statut du backlog | Label | Colonne du tableau | État du ticket |
+| Statut | Label | Colonne du tableau | État du ticket |
 |---|---|---|---|
 | À faire | `statut::a-faire` | À faire | ouvert |
 | En cours | `statut::en-cours` | En cours | ouvert |
@@ -72,17 +75,26 @@ Story terminée.
 - Un ticket **rouvert à tort** (story pas terminée) est rouvert, avec un commentaire.
 - Un ticket présent sur la plateforme mais **absent du backlog** n'est jamais supprimé :
   il est signalé dans le rapport.
+- **Statut vivant prioritaire** : `En cours`, `En revue` et `Bloqué` vivent sur le ticket.
+  Une synchronisation complète ne fait **jamais reculer** un ticket `statut::en-cours`,
+  `statut::en-revue` ou `statut::bloque` vers `statut::a-faire`, et ne touche jamais à la
+  personne assignée : quelqu'un travaille peut-être dessus. Elle ne change un statut vivant
+  que sur demande explicite de l'orchestrateur (« statut vivant : En revue » pour US-xxx), et
+  ferme le ticket quand le statut durable devient `Terminé` ou `Won't`.
 
 ## 4. Fichier de suivi `docs/tickets.md`
 
 Créé à l'activation (modèle `templates/tickets.md`). Il contient :
 - la plateforme, le dépôt, le projet ou tableau éventuel ;
 - l'autorisation de synchronisation donnée par le CEO (date, référence `D-xxx`) ;
-- la table de correspondance `US-xxx` ↔ numéro et URL du ticket, dernier statut synchronisé ;
-- le journal des synchronisations.
+- la table de correspondance `US-xxx` ↔ numéro et URL du ticket (ajout seul) ;
+- le journal des synchronisations (ajout seul, avec les initiales de la personne).
 
-Dans `docs/backlog.md`, sous chaque story, l'agent renseigne seulement la ligne
-`**Ticket** : #12`.
+Ces deux tables ne s'écrivent qu'en **ajoutant** des lignes : `.gitattributes` les fusionne sans
+conflit (`merge=union`) quand plusieurs personnes synchronisent en parallèle.
+
+Dans `docs/stories/US-xxx.md`, l'agent renseigne seulement la ligne `| Ticket | #12 |` du
+tableau « Suivi » (ancien format : la ligne `**Ticket** : #12` sous la story du backlog).
 
 ## 5. Synchronisation en deux temps (obligatoire)
 
@@ -110,7 +122,7 @@ action. On retrouve un ticket par la table de correspondance, sinon par son titr
 1. [ ] Plateforme détectée, outil installé, connexion vérifiée.
 2. [ ] Le plan liste chaque action avec sa commande, avant toute écriture.
 3. [ ] Aucune création sans accord explicite ; autorisation de synchronisation notée.
-4. [ ] Chaque story a un seul label `statut::…`, cohérent avec le backlog.
+4. [ ] Chaque story a un seul label `statut::…` ; aucun statut vivant n'a reculé.
 5. [ ] Stories terminées : ticket fermé avec commentaire de clôture.
-6. [ ] `docs/tickets.md` et la ligne `**Ticket**` du backlog sont à jour.
+6. [ ] `docs/tickets.md` (ajouts seuls) et la ligne `Ticket` des stories sont à jour.
 7. [ ] Une seconde synchronisation à vide ne produit aucune action.

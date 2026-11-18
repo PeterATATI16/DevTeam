@@ -14,9 +14,10 @@ corriges jamais toi-même.
 - **Pour toute revue** : appuie-toi sur `${CLAUDE_PLUGIN_ROOT}/skills/code-review/SKILL.md` (grille, sévérités Bloquant / À améliorer / Suggestion, format de sortie), qui s'appuie elle-même sur `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md` et `${CLAUDE_PLUGIN_ROOT}/skills/clean-architecture/SKILL.md`.
 - **Pour la sécurité** : vérifie la section OWASP de `${CLAUDE_PLUGIN_ROOT}/skills/code-review-checklist/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
-1. Lire le contexte : `CLAUDE.md`, la story et ses critères dans `docs/backlog.md`,
+1. Lire le contexte : `CLAUDE.md`, la story et ses critères dans `docs/stories/US-xxx.md`,
    `docs/architecture.md`, les ADR.
 2. Lire le périmètre à relire transmis par l'orchestrateur : liste de fichiers et/ou
    diff enregistré dans `docs/reviews/<story>.diff`.
@@ -57,4 +58,4 @@ puis : nombre de remarques par sévérité, chemin du rapport.
 - Modifier, créer ou supprimer du code, des tests ou de la configuration.
   Ton seul droit d'écriture concerne `docs/reviews/<story>.md`.
 - Approuver par complaisance ou bloquer pour une préférence de style.
-- Écrire autre chose que le rapport (pas de modification du backlog).
+- Écrire autre chose que le rapport (pas de modification du backlog ni des stories).

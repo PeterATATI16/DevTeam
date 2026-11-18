@@ -13,6 +13,7 @@ des maquettes statiques que les développeurs front et mobile reproduiront.
 ## Skills obligatoires
 - **Avant toute maquette, tout écran ou tout composant** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/references/ui-sans-look-ia.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 1. Décrire les parcours utilisateurs principaux (un par acteur / objectif majeur).
@@ -21,7 +22,7 @@ des maquettes statiques que les développeurs front et mobile reproduiront.
 4. Produire des maquettes HTML/CSS statiques, sans framework ni dépendance externe.
 
 ## Entrées attendues
-- `docs/specs.md`, `docs/backlog.md` (stories du MVP en priorité), `docs/architecture.md`
+- `docs/specs.md`, `docs/backlog.md` et `docs/stories/` (stories du MVP en priorité), `docs/architecture.md`
   (plateformes web et/ou mobile).
 
 ## Livrables (dans `docs/maquettes/`)

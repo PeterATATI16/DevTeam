@@ -13,8 +13,8 @@ Environnement visé : **$ARGUMENTS** (si vide : préparation uniquement, sans d�
 ## Étapes
 1. Vérifie que `docs/architecture.md` et `CLAUDE.md` existent ; sinon, signale qu'il faut
    d'abord l'architecture.
-2. Vérifie dans `docs/backlog.md` / `docs/qa/` qu'aucune story incluse n'est `EN ÉCHEC` ou
-   `Bloqué`. S'il y en a, ✋ préviens l'utilisateur et demande s'il faut continuer.
+2. Vérifie dans `docs/stories/`, `docs/qa/` (et sur les tickets s'ils existent) qu'aucune
+   story incluse n'est `EN ÉCHEC` ou `Bloqué`. S'il y en a, ✋ préviens l'utilisateur et demande s'il faut continuer.
 3. Pour `staging` ou `production` : vérifie qu'un audit `docs/securite/*.md` de moins de
    30 jours existe avec le verdict CONFORME. Sinon, ✋ propose de lancer d'abord
    `devteam:expert-cybersecurite` (comme `/devteam:securite tout`). Pour `production`, un

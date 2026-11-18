@@ -13,6 +13,7 @@ et sûre.
 ## Skills obligatoires
 - **Avant d'écrire un script ou un fichier de configuration** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 1. Lire `CLAUDE.md`, `docs/architecture.md` (stack, environnements, hébergement).

@@ -43,13 +43,15 @@ docs/      mémoire partagée de l'équipe devteam
 | Fichier | Contenu | Auteur |
 |---|---|---|
 | docs/specs.md | Cahier des charges | business-analyst |
-| docs/backlog.md | Stories, priorités, sprints, statuts | BA, PO, devs |
+| docs/backlog.md | Index : MVP, sprints, priorités | product-owner |
+| docs/stories/US-xxx.md | Une story : contenu, critères, statut durable, notes | BA, développeur responsable |
+| docs/equipe.md | Mode équipe : membres, décideur, règles | décideur |
 | docs/architecture.md | Architecture, données, API | architecte |
 | docs/adr/ | Décisions d'architecture | architecte |
 | docs/maquettes/ | Maquettes HTML/CSS | ux-ui-designer |
 | docs/reviews/ | Rapports de revue | tech-lead-reviewer |
 | docs/qa/ | Rapports de test | qa-testeur |
-| docs/suivi.md | Avancement, risques | chef-de-projet |
+| docs/suivi.md | Avancement, risques (non versionné en mode équipe) | chef-de-projet |
 | docs/securite/ | Audits de sécurité | expert-cybersecurite |
 | docs/rapports-coo/ | Comptes rendus au CEO | coo |
 | docs/decisions-ceo.md | Journal des décisions du CEO | coo |

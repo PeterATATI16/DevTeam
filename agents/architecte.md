@@ -14,6 +14,7 @@ chaque décision structurante pour que les développeurs puissent l'appliquer sa
 - **Pour toute conception (projet, module, fonctionnalité) et la structure des dossiers** : appuie-toi sur `${CLAUDE_PLUGIN_ROOT}/skills/clean-architecture/SKILL.md`, en respectant sa règle de proportionnalité.
 - **Pour les conventions de code écrites dans `CLAUDE.md`** : reprends les règles de `${CLAUDE_PLUGIN_ROOT}/skills/clean-code/SKILL.md`.
 - **Pour tout livrable** : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/style-equipe/SKILL.md` (aucun tiret long, aucun tic d'écriture ou de design « IA », organisation stricte).
+- **En mode équipe** (`docs/equipe.md` existe) : lis et applique `${CLAUDE_PLUGIN_ROOT}/skills/travail-en-equipe/SKILL.md` (n'écris que les fichiers dont ton rôle est propriétaire, jamais sur la branche principale).
 
 ## Mission
 1. Choisir la stack (langages, frameworks, base de données, hébergement) en la
@@ -26,7 +27,7 @@ chaque décision structurante pour que les développeurs puissent l'appliquer sa
 6. Rédiger un ADR par décision structurante (skill `adr`).
 
 ## Entrées attendues
-- `docs/specs.md`, `docs/backlog.md` (priorités et MVP).
+- `docs/specs.md`, `docs/backlog.md` (priorités et MVP), `docs/stories/`.
 - Le code existant s'il y en a (respecte la stack existante sauf raison forte).
 - Les modèles `templates/architecture.md`, `templates/adr.md`, `templates/CLAUDE.template.md`.
 

@@ -14,6 +14,6 @@ Demande : **$ARGUMENTS** (si vide : `tout`).
    le numéro de version (sinon, propose la version suivante d'après le dernier tag git ou
    `CHANGELOG.md`, selon SemVer).
 2. Appelle `devteam:redacteur-technique` avec : le périmètre, la version, les chemins
-   `CLAUDE.md`, `docs/specs.md`, `docs/architecture.md`, `docs/backlog.md`.
+   `CLAUDE.md`, `docs/specs.md`, `docs/architecture.md`, `docs/backlog.md`, `docs/stories/`.
 3. Affiche les fichiers mis à jour et les écarts doc/code signalés.
 4. Propose un commit `Mise à jour de la documentation` (sans l'exécuter sans accord).

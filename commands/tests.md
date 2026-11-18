@@ -23,7 +23,7 @@ obligatoires d'eux-mêmes (section « Skills obligatoires » de leur prompt).
 1. Vérifie l'existence de `CLAUDE.md` (commandes de test) et de `docs/backlog.md`. S'ils
    manquent, le QA travaillera sur la seule suite de tests existante : préviens-en.
 2. Appelle `devteam:qa-testeur` avec : la ou les stories ciblées, les chemins
-   `docs/specs.md`, `docs/backlog.md`, le rapport de revue s'il existe, le modèle
+   `docs/specs.md`, `docs/stories/US-xxx.md` (ou `docs/backlog.md`), le rapport de revue s'il existe, le modèle
    `templates/qa.md`. Nom du rapport : `docs/qa/<story>.md` ou
    `docs/qa/campagne-<AAAAMMJJ>.md` pour une campagne globale.
 3. Affiche le verdict, les critères couverts, les tests passés/total, les anomalies.

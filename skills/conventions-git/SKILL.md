@@ -68,7 +68,7 @@ fichier généré, de secret ou de `.env`.
 **Description** :
 ```markdown
 ## Contexte
-US-012 : Déclarer un sinistre en ligne (lien vers docs/backlog.md)
+US-012 : Déclarer un sinistre en ligne (lien vers docs/stories/US-012.md)
 
 ## Changements
 - …
